@@ -6,7 +6,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 const faqItems = [
   {
     q: "How long does a taxidermy project take to complete?",
-    a: "Wild Clone Taxidermy guarantees completion of all trophy mounts within 12 months from the date your trophies arrive at our facility and mounting instructions are confirmed. Our streamlined process and 14,000 sq ft facility ensure your trophies are handled with the care and efficiency they deserve — on time, every time.",
+    a: "Wild Clone Taxidermy guarantees completion of all trophy mounts within 12 months once your trophies have arrived at our facility, your deposit has been received, and mounting instructions have been confirmed. Our structured production schedule ensures your memories are preserved with elite craftsmanship within a reliable and transparent timeframe.",
   },
   {
     q: "What do I need to do to preserve my animal before bringing it in?",

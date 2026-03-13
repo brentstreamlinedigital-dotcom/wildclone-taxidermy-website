@@ -68,18 +68,21 @@ const serviceData: Record<string, { title: string; subtitle: string; description
     ],
   },
   "turnaround-time-guarantee": {
-    title: "12 Month Taxidermy Completion",
-    subtitle: "After deposit is received and mounting instructions are confirmed",
+    title: "12-Month Completion Guarantee",
+    subtitle: "Your Trophy. Our Commitment. Completed Within 12 Months.",
     description: [
-      "Wild Clone Taxidermy has a dedicated onsite global logistic company with 50+ offices around the world to ensure that when its time for your trophies to start their journey home, it is done in the most efficient way possible.",
-      "30+ years of mastery ensure your trophies are in expert hands. Our vet-approved facilities ensure seamless imports and exports. Enjoy live tracking, low shipping costs, and guaranteed taxidermy completion in 12 months.",
-      "Contact us to request the necessary documentation."
+      "At Wild Clone Taxidermy, we understand that your trophies represent once-in-a-lifetime memories. That is why we proudly stand behind our 12-Month Completion Guarantee.",
+      "Once your trophies have arrived at our facility, your deposit has been received, and mounting instructions have been confirmed, your order is placed into our structured production schedule. From that point forward, our team works through a carefully managed process to ensure your mounts are completed within 12 months.",
+      "This timeline allows our master artisans the time required to craft each piece with precision, anatomical accuracy, and exceptional attention to detail — while still delivering your trophies within a reliable and transparent timeframe.",
+      "With clear scheduling, regular progress updates, and strict quality control at every stage, you can trust that your trophies are in experienced hands from start to finish.",
     ],
     highlights: [
-      "Your order is secured once processing is confirmed",
-      "Trusted by hunters worldwide",
-      "Professional craftsmanship and quality control",
-      "Regular updates throughout the mounting process",
+      "12-Month Completion Commitment",
+      "Structured Production Scheduling for Reliable Turnaround Times",
+      "Regular Progress Updates Throughout",
+      "Trusted by Hunters & Outfitters Worldwide",
+      "Exceptional Craftsmanship & Strict Quality Control",
+      "Clear Communication from Start to Finish",
     ],
     image: "/images/XW6ZqhR2B6gGRCwq9bnFr7ES8.jpg",
   },
@@ -87,15 +90,16 @@ const serviceData: Record<string, { title: string; subtitle: string; description
     title: "Tanning",
     subtitle: "Professional skin preparation & tanning",
     description: [
-      "Our professional tanning service ensures every hide is treated to the highest standard for durability, suppleness, and a natural finish. We use industry-leading techniques and chemicals to preserve your trophy's skin to museum quality.",
-      "All skins are thoroughly cleaned, salted, and processed through our rigorous preparation pipeline before tanning. This ensures the best possible end result - whether for mounting or as a standalone skin display.",
-      "Our tanning process is designed to meet international export standards, making your trophies ready for shipping anywhere in the world with confidence.",
+      "At Wild Clone Taxidermy, our professional tanning process ensures that every hide is treated to the highest standards of durability, softness, and natural beauty. Using industry-leading techniques and premium tanning chemicals, we preserve your trophy's skin to exceptional, quality standards.",
+      "Each skin undergoes a meticulous preparation process where it is carefully cleaned, salted, and expertly processed through our specialised tanning pipeline before the tanning stage begins. This rigorous preparation ensures superior results, whether the hide is destined for mounting or displayed as a finished skin.",
+      "Our tanning methods are developed to meet strict international export standards, ensuring your trophies are properly preserved and ready for safe shipment anywhere in the world.",
     ],
     highlights: [
-      "Industry-leading tanning chemicals",
-      "Rigorous skin preparation and cleaning",
-      "Export-ready treatment process",
-
+      "Premium Tanning Chemicals",
+      "Meticulous Skin Preparation & Cleaning",
+      "Export-Ready Tanning Process",
+      "Exceptional Durability & Softness",
+      "Quality Preservation",
     ],
     image: "/images/tanning_service.jpg",
     customGallery: [
@@ -108,15 +112,16 @@ const serviceData: Record<string, { title: string; subtitle: string; description
     title: "Dip & Pack",
     subtitle: "Export-compliant sterilisation & packing",
     description: [
-      "Our taxidermy facility is veterinary approved, so should you wish to have your taxidermy processed at home or at a later stage, we offer a professional Dip & Pack service. Once raw trophies are received at our facility, skins are treated, dried, and cleaned to ensure your trophy arrives in the best possible condition.",
-      "Dip & Pack is the sterilising process necessary to export any raw animal part across international borders. It involves the removal of all flesh and tissue from skulls, horns, and bones, and the drying and bleaching of skulls and bones.",
-      "Skins are dried, cleaned, and treated with anti-bacterial powders to ensure that your trophy animal arrives in a dry and pest-free condition - compliant with all international import regulations.",
+      "Our taxidermy facility is veterinary approved, allowing us to professionally prepare trophies for clients who prefer to have their taxidermy completed in their home country or at a later stage. Through our specialised Dip & Pack service, raw trophies are carefully received, treated, dried, and prepared to ensure they leave our facility in optimal condition.",
+      "Dip & Pack is the sterilisation process required for the international export of raw animal products. This process includes the thorough removal of all flesh and tissue from skulls, horns, and bones, followed by careful drying and bleaching to meet international veterinary standards.",
+      "Skins are professionally dried, cleaned, and treated with specialised anti-bacterial agents to ensure your trophies arrive dry, clean, and pest-free — fully compliant with international import regulations.",
     ],
     highlights: [
-      "Veterinary-approved facility",
-      "Full skull and bone cleaning & bleaching",
-      "Anti-bacterial skin treatment",
-      "Compliant with international import standards",
+      "Veterinary-Approved Facility",
+      "Professional Dip & Pack Preparation",
+      "Full Skull & Bone Cleaning and Bleaching",
+      "Anti-Bacterial Skin Treatment",
+      "Compliant with International Import Regulations",
     ],
     image: "/images/029577_b33402f874b4491bb8d0373ee046a314mv2.jpg",
     customGallery: [
@@ -128,15 +133,17 @@ const serviceData: Record<string, { title: string; subtitle: string; description
     title: "Leather Worx",
     subtitle: "Handcrafted leather goods for the outdoorsman",
     description: [
-      "Our Leatherworks service offers premium, bespoke leather goods handcrafted by skilled artisans. Every piece is made to order, tailored to your specifications, and built to last a lifetime.",
-      "From custom slings and rifle belts to decorative leather panels and display accessories, we craft leather goods that complement your trophies and reflect your passion for the outdoors.",
-      "We use only the finest hides and traditional leatherworking techniques to ensure every item has the quality, character, and durability that the Wild Clone name stands for.",
+      "Our Leather Worx collection offers premium, bespoke leather goods handcrafted by our skilled leather-craftswoman. Each piece is individually made to order, tailored to your specifications, and designed to stand the test of time.",
+      "Turn your hides into luxury leather goods. From custom rifle slings, gun bags, and gun straps to decorative leather panels and display pieces, we create distinctive leather accessories that complement your trophies and reflect the spirit of the hunt. Our range also includes bespoke safari accessories, as well as beautifully crafted handbags, wallets, and other leather essentials.",
+      "Using only the finest hides and traditional leatherworking techniques, every item is crafted with precision, character, and durability — embodying the quality and craftsmanship that the Wild Clone name represents.",
     ],
     highlights: [
-      "Custom slings, belts, and accessories",
-      "Decorative leather panels and display pieces",
-      "Finest quality hides and materials",
-      "Made-to-order, personalised service",
+      "Custom Rifle Slings, Gun Bags & Gun Straps",
+      "Bespoke Safari Accessories",
+      "Custom Handbags, Wallets & Leather Accessories",
+      "Decorative Leather Panels & Display Pieces",
+      "Finest Quality Hides & Materials",
+      "Handcrafted, Made-to-Order Designs",
     ],
     customGallery: [
       "/Leatherworx images/leatherworks_1.jpg",
@@ -151,17 +158,17 @@ const serviceData: Record<string, { title: string; subtitle: string; description
     title: "Wylde Craft",
     subtitle: "Custom woodcraft to showcase your trophies",
     description: [
-      "Wylde Craft is Wild Clone's bespoke woodworking division — handcrafting statement furniture and display pieces that bring the spirit of the African wild into your home, lodge, or boardroom.",
-      "Every piece is built to order by our master craftsmen, using premium local and imported hardwoods. From custom poker tables crafted from genuine kudu and giraffe bone inlays to sleek glass-top coffee tables, slat shelving, and bedside pieces — each item is designed with intention and finished to exacting standards.",
-      "Wylde Craft pieces are more than furniture. They are conversation starters, heirlooms, and expressions of a lifestyle defined by adventure, craftsmanship, and connection to the wild.",
+      "Wylde Craft is Wild Clone's bespoke woodworking division — dedicated to handcrafting distinctive furniture and display pieces that bring the spirit of the African wild into your home, lodge, or boardroom.",
+      "Each piece is individually crafted to order by our master woodworkers, using carefully selected local and imported hardwoods. From bespoke poker and dining tables featuring genuine kudu and giraffe bone inlays to elegant glass-top coffee tables, side tables, slatted shelving, and bedside pieces, every design is created with purpose and finished to exceptional standards.",
+      "Wylde Craft creations are more than furniture — they are statement pieces. Designed to spark conversation and built to last for generations, each piece reflects a lifestyle defined by adventure, craftsmanship, and a deep connection to the wild.",
     ],
     highlights: [
-      "Bespoke poker and dining tables — 6 and 8-seater configurations",
-      "Giraffe and Kudu bone inlay statement pieces",
-      "Glass-top coffee tables and side tables",
-      "Bedside tables and decorative slatted shelving",
-      "Gun bags and custom safari accessories",
-      "Every piece built to order using premium hardwoods",
+      "Bespoke Poker & Dining Tables (6 and 8-Seater Configurations)",
+      "Signature Giraffe & Kudu Bone Inlay Designs",
+      "Glass-Top Coffee Tables & Side Tables",
+      "Bedside Tables & Decorative Slatted Shelving",
+      "Custom Statement Pieces for Homes, Lodges & Boardrooms",
+      "Built to Order Using Premium Hardwoods",
     ],
     leftImage: "/images/wyldecraft/giraffe_table.png",
     rightImage: "/images/wyldecraft/kudu_table.png",
@@ -232,7 +239,7 @@ const ServiceDetail = () => {
             ) : (
               <div className="flex justify-center mb-8">
                 <img
-                  src="/Modernised Logo.png"
+                  src="/modernised logo bgless.jpeg"
                   alt="Wild Clone Taxidermy Logo"
                   className="h-24 w-auto md:h-32 object-contain"
                 />
@@ -314,59 +321,13 @@ const ServiceDetail = () => {
 
 
 
-      {/* Wyldecraft Catalog */}
+      {/* Wyldecraft Catalog - Hidden for now
       {slug === "wyldecraft" && (
         <section className="pt-16 pb-24 lg:pb-32 bg-background border-t border-border/40">
-          <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
-            <AnimatedSection>
-              <div className="text-center mb-16">
-                <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">Featured Products</h2>
-                <p className="font-body text-sm text-muted-foreground max-w-2xl mx-auto">Explore our premium bespoke furniture and leather offerings, hand-crafted to celebrate the beauty of nature.</p>
-              </div>
-            </AnimatedSection>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Poker Tables */}
-              <AnimatedSection delay={0.1}>
-                <div className="bg-card border border-border rounded-xl p-8 hover:border-gray-medium transition-colors h-full flex flex-col">
-                  <h3 className="font-heading text-2xl font-bold text-foreground mb-2">The Lux Range Poker Tables</h3>
-                  <div className="text-gray-light font-body text-sm mb-6 flex-grow">
-                    <p className="mb-4">This height adjustable poker table doubles as a coffee table. Keep the cover on for everyday use, then lift it off and raise the height for instant game night.</p>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li>• Custom 8 Seater Poker Table (From $3300)</li>
-                      <li>• Custom 6 Seater Poker Table (From $3600)</li>
-                    </ul>
-                    <p className="mt-4 text-xs tracking-wide">Using a flat skin of your choice, this bespoke piece is fully customizable with various options for legs, wood stains and leather finishes.</p>
-                  </div>
-                  <div className="aspect-[4/3] bg-black rounded-lg flex items-center justify-center border border-border mt-auto overflow-hidden">
-                    <img src={service.leftImage || "/images/wyldecraft/giraffe_table.png"} alt="Poker Table" className="w-full h-full object-contain hover:scale-105 transition-transform duration-500 p-8" />
-                  </div>
-                </div>
-              </AnimatedSection>
-
-              {/* Auxiliary Tables */}
-              <AnimatedSection delay={0.2}>
-                <div className="bg-card border border-border rounded-xl p-8 hover:border-gray-medium transition-colors h-full flex flex-col">
-                  <h3 className="font-heading text-2xl font-bold text-foreground mb-2">Bespoke Tables</h3>
-                  <div className="text-gray-light font-body text-sm mb-6 flex-grow space-y-6 mt-4">
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1 text-base">Inner Horn Side Table ($400)</h4>
-                      <p className="text-muted-foreground">Featuring two distinctly unique components. A hand carved oak top with a beautiful texture resting on three polished kudu inner horns. This harmonious blend makes a one-of-a-kind piece.</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-1 text-base">Bedside Table ($500)</h4>
-                      <p className="text-muted-foreground">Have a left over backskin? Our oak bedside tables are adorned with your skins that would otherwise go unused. They are a true celebration of the beauty of nature.</p>
-                    </div>
-                  </div>
-                  <div className="aspect-[4/3] bg-black rounded-lg flex items-center justify-center border border-border mt-auto overflow-hidden">
-                    <img src={service.rightImage || "/images/wyldecraft/kudu_table.png"} alt="Bespoke Tables" className="w-full h-full object-contain hover:scale-105 transition-transform duration-500 p-8" />
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-          </div>
+...
         </section>
       )}
+      */}
 
       {/* Professional Communication Portal Diagrams */}
       {slug === "professional-communication" && (

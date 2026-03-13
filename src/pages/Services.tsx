@@ -61,7 +61,7 @@ const Services = () => {
         <motion.div style={{ y: heroY }} className="container mx-auto px-6 lg:px-12 text-center">
           <AnimatedSection>
             <div className="flex justify-center mb-8">
-              <img src="/Modernised Logo.png" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
+              <img src="/modernised logo bgless.jpeg" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
             </div>
             <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight mb-2">
               Wild Clone
@@ -79,19 +79,21 @@ const Services = () => {
       {/* Gallery Grid */}
       <section className="pb-24 lg:pb-32 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             {services.map((svc, i) => (
-              <AnimatedSection key={svc.title} delay={i * 0.08} scale>
-                {svc.external ? (
-                  <a href={svc.href} target="_blank" rel="noopener noreferrer" className="block h-full">
-                    <ServiceCard svc={svc} />
-                  </a>
-                ) : (
-                  <Link to={svc.href} className="block h-full">
-                    <ServiceCard svc={svc} />
-                  </Link>
-                )}
-              </AnimatedSection>
+              <div key={svc.title} className="w-full md:basis-[calc(50%-1.5rem)] lg:basis-[calc(33.333%-1.5rem)]">
+                <AnimatedSection delay={i * 0.08} scale>
+                  {svc.external ? (
+                    <a href={svc.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                      <ServiceCard svc={svc} />
+                    </a>
+                  ) : (
+                    <Link to={svc.href} className="block h-full">
+                      <ServiceCard svc={svc} />
+                    </Link>
+                  )}
+                </AnimatedSection>
+              </div>
             ))}
           </div>
         </div>
@@ -116,38 +118,24 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ svc }: ServiceCardProps) => (
   <div
-    className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer border border-border"
-    style={{ background: svc.imageBg || "#111" }}
+    className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer border border-border bg-card hover:border-gray-medium transition-colors duration-500"
   >
-    {/* Background image */}
-    <img
-      src={svc.image}
-      alt={svc.title}
-      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-    />
-
-    {/* Base gradient — always visible at bottom */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-
-    {/* Hover overlay — subtly darkens the card */}
-    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-colors duration-500" />
-
     {/* Content pinned to bottom */}
-    <div className="absolute inset-0 flex flex-col justify-end p-6">
-      {/* Description — slides up and fades in on hover */}
-      <p className="font-body text-xs text-white/80 leading-relaxed mb-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out line-clamp-3">
+    <div className="absolute inset-0 flex flex-col justify-end p-8">
+      {/* Description — visible on hover */}
+      <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out line-clamp-4">
         {svc.desc}
       </p>
 
       <div className="flex items-center justify-between">
-        <h3 className="font-heading text-xl md:text-2xl font-semibold text-white leading-tight">
+        <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground leading-tight">
           {svc.title}
         </h3>
         {/* Arrow CTA */}
-        <span className="flex items-center gap-1 font-body text-xs text-white/60 group-hover:text-white transition-colors duration-300 shrink-0 ml-3">
+        <span className="flex items-center gap-1 font-body text-xs text-gray-medium group-hover:text-foreground transition-colors duration-300 shrink-0 ml-3">
           View
           <svg
-            className="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+            className="w-4 h-4 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

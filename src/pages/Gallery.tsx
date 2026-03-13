@@ -23,8 +23,6 @@ const galleryImages = [
     { src: "/images/New Gallery Watermark Images/Untitled design (17).png", alt: "Gallery Mount 17" },
     { src: "/images/New Gallery Watermark Images/Untitled design (18).png", alt: "Gallery Mount 18" },
     { src: "/images/New Gallery Watermark Images/Untitled design (19).png", alt: "Gallery Mount 19" },
-    { src: "/images/New Gallery Watermark Images/Wild Clone Brochure July 2025_Compressed(9).pdf (1).png", alt: "Gallery Feature 1" },
-    { src: "/images/New Gallery Watermark Images/Wild Clone Brochure July 2025_Compressed(9).pdf (2).png", alt: "Gallery Feature 2" },
 ];
 
 const Gallery = () => {
@@ -45,7 +43,7 @@ const Gallery = () => {
                 <motion.div style={{ y: heroY, opacity: heroOpacity }} className="container mx-auto px-6 lg:px-12 text-center">
                     <AnimatedSection>
                         <div className="flex justify-center mb-8">
-                          <img src="/Modernised Logo.png" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
+                          <img src="/modernised logo bgless.jpeg" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
                         </div>
                         <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight mb-2">
                             Gallery
@@ -84,33 +82,49 @@ const Gallery = () => {
             </section>
 
             {/* Videos Section */}
-            <section className="pb-32 bg-background">
+            <section className="pb-24 pt-8 bg-background">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <AnimatedSection>
-                        <h3 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-                            Videos
-                        </h3>
-                    </AnimatedSection>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                        {[1, 2, 3].map((i) => (
-                            <AnimatedSection key={`video-${i}`} delay={i * 0.1} scale>
-                                <div className="aspect-[2/3] bg-card border border-border rounded-2xl flex flex-col items-center justify-center overflow-hidden group hover:border-gray-medium transition-colors duration-500">
-                                    <div className="text-center p-8 text-balance">
-                                        <div className="w-16 h-16 bg-foreground/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-foreground/20 transition-colors duration-500">
-                                            <svg className="w-8 h-8 text-foreground" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
-                                            </svg>
-                                        </div>
-                                        <p className="font-heading text-lg font-semibold text-foreground mb-2">Featured Video {i}</p>
-                                        <p className="font-body text-xs text-muted-foreground">Facebook Content Piece</p>
-                                    </div>
-                                    {/* Placeholder for the actual embed */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                                        <span className="text-white text-xs font-body tracking-wider uppercase">Watch on Facebook</span>
-                                    </div>
+                    <div className="max-w-5xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <AnimatedSection key="video-1" delay={0.1} scale>
+                                <div className="aspect-[9/16] bg-black border border-border rounded-2xl overflow-hidden group hover:border-gray-medium transition-colors duration-500 relative">
+                                    <video 
+                                        src="/gallery videos/video_2026-03-13_09-55-51.mp4" 
+                                        className="w-full h-full object-cover"
+                                        controls
+                                        loop
+                                        muted
+                                        playsInline
+                                    />
                                 </div>
                             </AnimatedSection>
-                        ))}
+
+                            <AnimatedSection key="video-2" delay={0.2} scale>
+                                <div className="aspect-[9/16] bg-black border border-border rounded-2xl overflow-hidden group hover:border-gray-medium transition-colors duration-500 relative">
+                                    <video 
+                                        src="/gallery videos/video_2026-03-13_09-55-51 (2).mp4" 
+                                        className="w-full h-full object-cover"
+                                        controls
+                                        loop
+                                        muted
+                                        playsInline
+                                    />
+                                </div>
+                            </AnimatedSection>
+
+                            <AnimatedSection key="video-3" delay={0.3} scale>
+                                <div className="aspect-[9/16] bg-black border border-border rounded-2xl overflow-hidden group hover:border-gray-medium transition-colors duration-500 relative">
+                                    <video 
+                                        src="/gallery videos/video_2026-03-13_09-55-51 (3).mp4" 
+                                        className="w-full h-full object-cover"
+                                        controls
+                                        loop
+                                        muted
+                                        playsInline
+                                    />
+                                </div>
+                            </AnimatedSection>
+                        </div>
                     </div>
                 </div>
             </section>

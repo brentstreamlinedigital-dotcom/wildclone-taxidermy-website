@@ -24,7 +24,7 @@ const About = () => {
         <motion.div style={{ scale: heroScale, opacity: heroOpacity, y: heroY }} className="absolute inset-0">
           <img src="/images/DSC02614.jpg" alt="Wild Clone Studio" className="w-full h-full object-cover" />
         </motion.div>
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-black/30" />
         <motion.div
           initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -32,15 +32,19 @@ const About = () => {
           style={{ y: heroY }}
           className="relative z-10 text-center px-6"
         >
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight mb-4">
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/Official Logo.png" 
+              alt="Wild Clone Taxidermy Logo" 
+              className="h-24 w-auto md:h-32 object-contain" 
+            />
+          </div>
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight mb-4 text-shadow-lg">
             About Wild Clone
           </h1>
-          <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl text-gray-light tracking-tight">
+          <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl text-foreground tracking-tight text-shadow-lg">
             Taxidermy
           </h2>
-          <p className="font-body text-sm text-gray-light mt-6">
-            Capture the moment. Preserve the memory.
-          </p>
         </motion.div>
       </section>
 
@@ -51,7 +55,7 @@ const About = () => {
             <div className="font-body text-sm text-muted-foreground leading-relaxed space-y-4 max-w-4xl mx-auto mb-16">
               <div className="flex justify-center mb-8">
                 <img
-                  src="/Modernised Logo.png"
+                  src="/modernised logo bgless.jpeg"
                   alt="Wild Clone Taxidermy Logo"
                   className="h-24 w-auto md:h-32 object-contain"
                 />

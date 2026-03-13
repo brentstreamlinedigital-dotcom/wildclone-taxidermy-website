@@ -45,7 +45,7 @@ const Contact = () => {
         <motion.div style={{ y: heroY }} className="container mx-auto px-6 lg:px-12 text-center">
           <AnimatedSection>
             <div className="flex justify-center mb-8">
-              <img src="/Modernised Logo.png" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
+              <img src="/modernised logo bgless.jpeg" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
             </div>
             <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight mb-2">
               Contact Wild Clone
@@ -157,7 +157,7 @@ const Contact = () => {
 
           {/* Branch Cards + Contact Details — second */}
           <AnimatedSection>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
               <div className="bg-card border border-border rounded-xl p-6 text-center hover:border-gray-medium transition-colors">
                 <h3 className="font-heading text-xl font-bold text-foreground mb-2">Port Elizabeth</h3>
                 <p className="font-body text-sm text-muted-foreground">46 de Stades<br/>Colleen Glen<br/>Port Elizabeth</p>
@@ -176,7 +176,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <div className="inline-flex flex-col md:flex-row items-center gap-6 md:gap-12 bg-gray-dark border border-border rounded-2xl p-8">
                 <div>
                   <h4 className="font-heading text-sm text-gray-medium tracking-widest uppercase mb-2">Email Us</h4>
@@ -202,16 +202,18 @@ const Contact = () => {
       <section className="pb-24 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Our Branches</h2>
-            <p className="font-body text-sm text-muted-foreground text-center max-w-lg mx-auto mb-10">
-              Wild Clone Taxidermy operates from multiple locations across South Africa.
-            </p>
-            <div className="rounded-2xl overflow-hidden border border-border">
-              <img
-                src="/wild clone map.png"
-                alt="Wild Clone Taxidermy Branch Locations"
-                className="w-full h-auto object-cover"
-              />
+            <div className="max-w-4xl mx-auto">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Our Branches</h2>
+              <p className="font-body text-sm text-muted-foreground text-center max-w-lg mx-auto mb-8">
+                Wild Clone Taxidermy operates from multiple locations across South Africa.
+              </p>
+              <div className="rounded-2xl overflow-hidden border border-border">
+                <img
+                  src="/wild clone map.png"
+                  alt="Wild Clone Taxidermy Branch Locations"
+                  className="w-full h-auto object-contain max-h-[500px]"
+                />
+              </div>
             </div>
           </AnimatedSection>
         </div>

@@ -15,7 +15,7 @@ const FulfillmentPolicy = () => {
         <div className="container mx-auto px-6 lg:px-12 max-w-4xl text-center">
           <AnimatedSection>
             <div className="flex justify-center mb-8">
-              <img src="/Modernised Logo.png" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
+              <img src="/modernised logo bgless.jpeg" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold text-foreground tracking-tight mb-8">
               Fulfilment Policy

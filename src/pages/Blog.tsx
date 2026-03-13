@@ -15,12 +15,12 @@ const Blog = () => {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <AnimatedSection>
             <div className="flex justify-center mb-8">
-              <img src="/Modernised Logo.png" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
+              <img src="/modernised logo bgless.jpeg" alt="Wild Clone Taxidermy Logo" className="h-24 w-auto md:h-32 object-contain" />
             </div>
             <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tight mb-4">
               Our Blog
             </h1>
-            <p className="font-body text-base md:text-lg text-gray-light max-w-2xl mx-auto mb-8">
+            <p className="font-body text-sm text-muted-foreground max-w-lg mx-auto mb-8">
               News, updates, and insights from the team at Wild Clone Taxidermy.
             </p>
           </AnimatedSection>

@@ -28,8 +28,8 @@ const whyCards = [
     imageClassName: "object-cover group-hover:scale-110",
   },
   {
-    title: "12-Month Completion Guarantee",
-    desc: "We are committed to completing your trophy mounts within 12 months. From the moment your trophies arrive at our facility, you can track progress and trust that your mounts will be delivered to the highest standard — on time.",
+    title: "12 Month Guarantee",
+    desc: "We are committed to completing your trophy mounts within 12 months of receiving mounting instructions",
     href: "/services/turnaround-time-guarantee",
     image: "/images/completion_enhanced.png",
     imageClassName: "object-cover group-hover:scale-110",
