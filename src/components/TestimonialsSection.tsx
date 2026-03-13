@@ -36,7 +36,7 @@ const TestimonialsSection = () => (
         <div className="bg-card border border-border rounded-2xl p-12 lg:p-16">
           <div className="text-center mb-16">
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-              What our clients say
+              What Our Clients Say
             </h2>
             <p className="font-body text-sm text-muted-foreground max-w-2xl mx-auto">
               about Wild Clone's Excellence

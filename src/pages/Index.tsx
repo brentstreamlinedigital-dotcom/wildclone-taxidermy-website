@@ -29,7 +29,7 @@ const whyCards = [
   },
   {
     title: "12 Month Guarantee",
-    desc: "Once your trophies have arrived at our facility, your deposit has been received, and mounting instructions have been confirmed",
+    desc: "Once your trophies have arrived at our facility, your deposit has been received, and mounting instructions have been confirmed.",
     href: "/services/turnaround-time-guarantee",
     image: "/images/completion_enhanced.png",
     imageClassName: "object-cover group-hover:scale-110",
