@@ -70,9 +70,8 @@ const Mounts = () => {
         </div>
       </section>
 
-      {/* Diagram */}
       <section className="pb-24 bg-background">
-        <div className="container mx-auto px-6 lg:px-12 max-w-4xl">
+        <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
           <div className="flex flex-col gap-6 mb-12">
 
             {/* Top half — Shoulder Mount */}
@@ -81,13 +80,13 @@ const Mounts = () => {
                 <div className="px-6 pt-5 pb-3">
                   <p className="font-heading text-sm font-semibold text-muted-foreground uppercase tracking-widest text-center">Shoulder Mount</p>
                 </div>
-                {/* Show top half: container is 70% of the natural image area */}
-                <div className="relative overflow-hidden w-full" style={{ paddingBottom: "70%" }}>
+                {/* Show top half: container is 85% of the natural image area */}
+                <div className="relative overflow-hidden w-full" style={{ paddingBottom: "85%" }}>
                   <img
                     src="/images/diagram_inverted.jpg"
                     alt="Shoulder Mount Direction Diagram"
                     className="absolute inset-0 w-full"
-                    style={{ top: "0", height: "210%" }}
+                    style={{ top: "0", height: "220%" }}
                   />
                 </div>
               </div>
@@ -100,12 +99,12 @@ const Mounts = () => {
                   <p className="font-heading text-sm font-semibold text-muted-foreground uppercase tracking-widest text-center">Wall Pedestal Mount</p>
                 </div>
                 {/* Show bottom half: push image up and increase height */}
-                <div className="relative overflow-hidden w-full" style={{ paddingBottom: "70%" }}>
+                <div className="relative overflow-hidden w-full" style={{ paddingBottom: "85%" }}>
                   <img
                     src="/images/diagram_inverted.jpg"
                     alt="Wall Pedestal Mount Direction Diagram"
                     className="absolute w-full"
-                    style={{ top: "-110%", height: "210%" }}
+                    style={{ top: "-125%", height: "220%" }}
                   />
                 </div>
               </div>
