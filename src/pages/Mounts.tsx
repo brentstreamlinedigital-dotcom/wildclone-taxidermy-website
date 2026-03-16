@@ -30,13 +30,13 @@ const mountTypes = [
         title: "Wall Pedestal",
         slug: "wall-pedestal",
         desc: "Extending slightly from the wall, adding depth and dramatic presence.",
-        image: "/wall pedastal/WALL PEDESTAL - SABLE.png",
+        image: "/wall pedastal/WALL PEDESTAL -  NYALA.png",
     },
     {
         title: "Floor Pedestal",
         slug: "floor-pedestal",
         desc: "A freestanding centerpiece, bringing your trophy into the heart of the room.",
-        image: "/floor pedastals/FLOOR PEDESTAL - BUFFALO.png",
+        image: "/floor pedastals/FLOOR PEDESTAL - GEMSBOK.png",
     },
     {
         title: "Half Mounts",
@@ -66,6 +66,9 @@ const Mounts = () => {
             <section ref={heroRef} className="pt-40 pb-16 bg-background overflow-hidden relative border-b border-border">
                 <motion.div style={{ y: heroY, opacity: heroOpacity }} className="container mx-auto px-6 lg:px-12 text-center relative z-10">
                     <AnimatedSection>
+                        <Link to="/services" className="inline-block font-body text-xs text-muted-foreground hover:text-foreground transition-colors mb-8 uppercase tracking-wider">
+                          ← Back to Services
+                        </Link>
                         <div className="flex justify-center mb-8">
                           <img
                             src="/modernised logo bgless.jpeg"

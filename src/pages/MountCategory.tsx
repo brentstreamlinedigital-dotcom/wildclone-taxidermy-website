@@ -64,8 +64,8 @@ const mountData: Record<string, MountData> = {
     finishingNote:
       "Full mounts include habitat base options, custom lighting consultation, and white-glove delivery for oversized pieces.",
     images: [
-      "/Custom Mounts/FATHER AND SON MOUNT (1).png",
       "/Custom Mounts/FULL MOUNT MOUNT - COMBO SHIEL IMPALA.png",
+      "/Custom Mounts/FATHER AND SON MOUNT (1).png",
       "/Custom Mounts/FULL MOUNT MOUNT - HONEYBADGER.png"
     ],
   },
@@ -110,8 +110,7 @@ const mountData: Record<string, MountData> = {
       "/wall pedastal/WALL PEDESTAL -  KUDU.png",
       "/wall pedastal/WALL PEDESTAL -  NYALA.png",
       "/wall pedastal/WALL PEDESTAL -  WARTHOG.png",
-      "/wall pedastal/WALL PEDESTAL - GEMSBOK.png",
-      "/wall pedastal/WALL PEDESTAL - SABLE.png"
+      "/wall pedastal/WALL PEDESTAL - GEMSBOK.png"
     ],
   },
   "floor-pedestal": {
@@ -131,9 +130,12 @@ const mountData: Record<string, MountData> = {
       "Floor pedestals are finished with weighted bases for stability and come with optional habitat integration including rocks, grasses, and terrain elements.",
     images: [
       "/floor pedastals/FLOOR PEDESTAL - BUFFALO.png",
+      "/floor pedastals/FLOOR PEDESTAL - ELAND.png",
       "/floor pedastals/FLOOR PEDESTAL - GEMSBOK.png",
       "/floor pedastals/FLOOR PEDESTAL - KUDU.png",
-      "/floor pedastals/FLOOR PEDESTAL - SABLE.png"
+      "/floor pedastals/FLOOR PEDESTAL - SABLE.png",
+      "/floor pedastals/WhatsApp Image 2026-03-16 at 09.27.29.jpeg",
+      "/floor pedastals/WhatsApp Image 2026-03-16 at 09.27.30.jpeg"
     ],
   },
   "half-mounts": {
@@ -173,7 +175,10 @@ const mountData: Record<string, MountData> = {
     finishingNote:
       "African 3D Shields are finished with hand-stitched leather edging and optional brass plaques engraved with hunt details, dates, and locations.",
     images: [
-      "/3d shields/AFRICAN 3D SHIELD (1).png"
+      "/3d shields/AFRICAN 3D SHIELD (1).png",
+      "/3d shields/Untitled design (21).png",
+      "/3d shields/new 3d shield.png",
+      "/3d shields/WhatsApp Image 2026-03-16 at 09.27.29 (1).jpeg"
     ],
   },
 };

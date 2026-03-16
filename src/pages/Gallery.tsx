@@ -8,8 +8,8 @@ import Lightbox from "@/components/Lightbox";
 
 const galleryImages = [
     { src: "/images/New Gallery Watermark Images/Untitled design (1).png", alt: "Gallery Mount 1" },
-    { src: "/images/New Gallery Watermark Images/Untitled design (2).png", alt: "Gallery Mount 2" },
-    { src: "/images/New Gallery Watermark Images/Untitled design (3).png", alt: "Gallery Mount 3" },
+    { src: "/New gallery images/mounts (5).png", alt: "Gallery Mount 2" },
+    { src: "/New gallery images/mounts (4).png", alt: "Gallery Mount 3" },
     { src: "/images/New Gallery Watermark Images/Untitled design (4).png", alt: "Gallery Mount 4" },
     { src: "/images/New Gallery Watermark Images/Untitled design (6).png", alt: "Gallery Mount 6" },
     { src: "/images/New Gallery Watermark Images/Untitled design (7).png", alt: "Gallery Mount 7" },
@@ -17,12 +17,13 @@ const galleryImages = [
     { src: "/images/New Gallery Watermark Images/Untitled design (9).png", alt: "Gallery Mount 9" },
     { src: "/images/New Gallery Watermark Images/Untitled design (12).png", alt: "Gallery Mount 12" },
     { src: "/images/New Gallery Watermark Images/Untitled design (13).png", alt: "Gallery Mount 13" },
-    { src: "/new gallery.png", alt: "Gallery Mount 14" },
     { src: "/images/New Gallery Watermark Images/Untitled design (15).png", alt: "Gallery Mount 15" },
     { src: "/images/New Gallery Watermark Images/Untitled design (16).png", alt: "Gallery Mount 16" },
     { src: "/images/New Gallery Watermark Images/Untitled design (17).png", alt: "Gallery Mount 17" },
     { src: "/images/New Gallery Watermark Images/Untitled design (18).png", alt: "Gallery Mount 18" },
     { src: "/images/New Gallery Watermark Images/Untitled design (19).png", alt: "Gallery Mount 19" },
+    { src: "/New gallery images/EXPERT CRAFTMINSHIP CARD PHOTO (2).png", alt: "Expert Craftsmanship" },
+    { src: "/New gallery images/mounts (1).png", alt: "Gallery Mount 20" },
 ];
 
 const Gallery = () => {
@@ -60,9 +61,14 @@ const Gallery = () => {
 
             <section className="pb-32 bg-background">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <div className="flex flex-wrap justify-center -mx-2">
                         {galleryImages.map((img, i) => (
-                            <AnimatedSection key={i} delay={i * 0.05} scale>
+                            <AnimatedSection 
+                                key={i} 
+                                delay={i * 0.05} 
+                                scale 
+                                className="px-2 mb-4 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
+                            >
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
                                     transition={{ duration: 0.4 }}

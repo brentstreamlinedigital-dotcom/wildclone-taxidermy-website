@@ -1,10 +1,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Lightbox from "@/components/Lightbox";
+
+const galleryImages = [
+  { src: "/Services images/mounting1.jpg", alt: "Taxidermy Mounting Process" },
+  { src: "/Services images/tanning1.jpg", alt: "Professional Tanning Process" },
+  { src: "/Services images/mounting3.jpg", alt: "Quality Craftsmanship" },
+];
 
 const About = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -15,6 +22,10 @@ const About = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const openLightbox = useCallback((i: number) => setLightboxIndex(i), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -93,6 +104,46 @@ const About = () => {
       </section>
 
       <TestimonialsSection />
+
+      {/* Studio Gallery Section */}
+      <section className="py-24 bg-background border-t border-border/40">
+        <div className="container mx-auto px-6 lg:px-12">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">Our Studio</h2>
+              <p className="font-body text-sm text-muted-foreground max-w-2xl mx-auto">
+                A glimpse behind the scenes at our state-of-the-art facility where artistry and precision come together.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((img, i) => (
+              <AnimatedSection key={i} delay={i * 0.1} scale>
+                <div 
+                  onClick={() => openLightbox(i)}
+                  className="group relative aspect-[3/2] rounded-xl overflow-hidden border border-border bg-card cursor-zoom-in hover:border-gray-medium transition-all duration-500"
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Lightbox
+        images={galleryImages}
+        currentIndex={lightboxIndex}
+        onClose={closeLightbox}
+        onNavigate={setLightboxIndex}
+      />
+
       <CTABanner />
       <Footer />
     </div>

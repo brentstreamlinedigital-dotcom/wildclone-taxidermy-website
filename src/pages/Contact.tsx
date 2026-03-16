@@ -202,7 +202,7 @@ const Contact = () => {
       <section className="pb-24 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
           <AnimatedSection>
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Our Branches</h2>
               <p className="font-body text-sm text-muted-foreground text-center max-w-lg mx-auto mb-8">
                 Wild Clone Taxidermy operates from multiple locations across South Africa.
@@ -211,7 +211,7 @@ const Contact = () => {
                 <img
                   src="/wild clone map.png"
                   alt="Wild Clone Taxidermy Branch Locations"
-                  className="w-full h-auto object-contain max-h-[500px]"
+                  className="w-full h-auto object-contain max-h-[700px]"
                 />
               </div>
             </div>

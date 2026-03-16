@@ -104,7 +104,7 @@ const serviceData: Record<string, { title: string; subtitle: string; description
     image: "/images/tanning_service.jpg",
     customGallery: [
       "/images/tanning_process_1.jpg",
-      "/images/tanning_process_2.png",
+      "/Services images/tanning1.jpg",
       "/images/tanning_process_3.png",
     ]
   },
