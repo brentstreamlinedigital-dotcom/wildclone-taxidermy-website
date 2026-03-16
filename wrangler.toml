@@ -1,0 +1,6 @@
+name = "wildclone-taxidermy"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-03-16"
+
+[vars]
+# Add environment variables here if needed
