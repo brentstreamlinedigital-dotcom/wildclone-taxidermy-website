@@ -66,7 +66,7 @@ const Index = () => {
             preload="auto"
             className="w-full h-full object-cover"
           >
-            <source src="/images/hero-bg.mp4" type="video/mp4" />
+            <source src="/New hero video/hero-bg.mp4" type="video/mp4" />
           </video>
         </motion.div>
         {/* Dark overlay for text readability */}
