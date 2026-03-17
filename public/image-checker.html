@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><style>
+  body { font-family: sans-serif; background: #fff; }
+  .grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .card { width: 300px; border: 1px solid #ccc; padding: 10px; }
+  img { max-width: 100%; height: auto; }
+</style></head>
+<body>
+  <h1>Image Checker</h1>
+  <div class="grid" id="grid">
+    <script>
+      const images = [
+        "029577_335b93f9a9d74912bd9e93f8a923b54fmv2.png",
+        "029577_4639288ce4964645a1b7e9c6cd13b153mv2.jpg",
+        "029577_a71f122453564c86bfe94d3e276e26bemv2.jpg",
+        "029577_b33402f874b4491bb8d0373ee046a314mv2.jpg",
+        "029577_cd394e0a1be342418cc9b2e4a06302acmv2.jpg",
+        "23FVknLJGGuivl7ZZLQFdiXZFbI.jpg",
+        "814247_6cea941d19e249d487aaa6e59d9bf6a4mv2.jpg",
+        "D5Udo769MFaUAyjMhWb15p7bzg-c79f3a000a783.jpg",
+        "D5Udo769MFaUAyjMhWb15p7bzg.jpg",
+        "HH8GLs9hiwlxJTmnlCc9i0L2fXM-39ce814654dd8.png",
+        "HH8GLs9hiwlxJTmnlCc9i0L2fXM.png",
+        "K33Pq9a36R5DDduBQ751wca4jk.png",
+        "L94i3LGfYCv7EaBoQOQV731gA.png",
+        "QWS9E07qeaf2sP2VkEWJZpb2ixY-9c8c79f8590188.png",
+        "QWS9E07qeaf2sP2VkEWJZpb2ixY.png",
+        "S2yplh1DbUFF3qfoWSukRnpP6u8.png",
+        "XW6ZqhR2B6gGRCwq9bnFr7ES8.jpg",
+        "eNvVQ0SEwjQvfpWOrVlZ8D4KPQ.png",
+        "vFw6cbMbJtpWT5dpzB2jWFup5fk.png",
+        "vssE31UBI0lmPD0HAgfheuCQVio.png",
+        "yO57Y1OmbiUrNgBZ8tJnu4bre4.jpg"
+      ];
+      
+      images.forEach(img => {
+        document.getElementById("grid").innerHTML += `
+          <div class="card">
+            <img src="/images/${img}" />
+            <p>${img}</p>
+          </div>
+        `;
+      });
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+name = "wildclone-taxidermy"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-03-16"
+
+[vars]
+# Explicitly set versions to avoid build tool detection issues
+NODE_VERSION = "22.16.0"
+NPM_VERSION = "10.9.2"
+BUN_VERSION = "none"

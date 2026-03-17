@@ -1,0 +1,9 @@
+.venv
+.bg-venv
+node_modules
+*.py
+SKILLBOOK.md
+debug.txt
+output.txt
+bun.lockb
+package-lock.json
