@@ -1,11 +1,3 @@
-# Wild Clone Taxidermy
+# Wildclone Taxidermy
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Last updated: Tue Mar 17 12:45:34 SAST 2026
