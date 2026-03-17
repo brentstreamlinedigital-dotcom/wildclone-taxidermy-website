@@ -6,4 +6,3 @@ compatibility_date = "2024-03-16"
 # Explicitly set versions to avoid build tool detection issues
 NODE_VERSION = "22.16.0"
 NPM_VERSION = "10.9.2"
-BUN_VERSION = "none"
