@@ -24,3 +24,13 @@ dist-ssr
 *.sw?
 .vercel
 .env*.local
+
+# Python
+.venv
+.bg-venv
+venv
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
