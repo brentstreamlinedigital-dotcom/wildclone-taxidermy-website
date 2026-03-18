@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import FAQSection from "@/components/FAQSection";
 import CTABanner from "@/components/CTABanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useContactForm } from "@/hooks/useContactForm";
 
 const countries = [
   "United States", "Canada", "United Kingdom", "Germany", "France", "Australia",
@@ -19,23 +20,12 @@ const animalCategories = [
 ];
 
 const Contact = () => {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    country: "",
-    animalCategory: "",
-    message: "",
-  });
+  const { form, onSubmit, isSubmitting } = useContactForm();
+  const { register, formState: { errors } } = form;
 
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Thank you for your enquiry! We'll be in touch shortly.");
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -67,62 +57,58 @@ const Contact = () => {
           <AnimatedSection scale>
             <div className="bg-card border border-border rounded-2xl p-8 lg:p-12 max-w-4xl mx-auto hover:border-gray-medium transition-colors duration-500 mb-16">
               <h2 className="font-heading text-3xl font-bold text-foreground mb-8 text-center">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={onSubmit} className="space-y-6">
+                <input type="hidden" {...register("bot-field")} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="font-body text-sm text-foreground mb-2 block">First name*</label>
                     <input
+                      {...register("firstName")}
                       type="text"
-                      required
                       placeholder="Jane"
-                      value={form.firstName}
-                      onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                      className="w-full bg-gray-dark border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors"
+                      className={`w-full bg-gray-dark border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors ${errors.firstName ? 'border-red-500' : 'border-border'}`}
                     />
+                    {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
                   </div>
                   <div>
                     <label className="font-body text-sm text-foreground mb-2 block">Last Name*</label>
                     <input
+                      {...register("lastName")}
                       type="text"
-                      required
                       placeholder="Smith"
-                      value={form.lastName}
-                      onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                      className="w-full bg-gray-dark border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors"
+                      className={`w-full bg-gray-dark border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors ${errors.lastName ? 'border-red-500' : 'border-border'}`}
                     />
+                    {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>}
                   </div>
                 </div>
                 <div>
                   <label className="font-body text-sm text-foreground mb-2 block">How can we reach you?*</label>
                   <input
+                    {...register("email")}
                     type="email"
-                    required
                     placeholder="you@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-gray-dark border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors"
+                    className={`w-full bg-gray-dark border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors ${errors.email ? 'border-red-500' : 'border-border'}`}
                   />
+                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="font-body text-sm text-foreground mb-2 block">Where Are you from?*</label>
                     <select
-                      required
-                      value={form.country}
-                      onChange={(e) => setForm({ ...form, country: e.target.value })}
-                      className="w-full bg-gray-dark border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-gray-light transition-colors appearance-none"
+                      {...register("country")}
+                      className={`w-full bg-gray-dark border rounded-lg px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-gray-light transition-colors appearance-none ${errors.country ? 'border-red-500' : 'border-border'}`}
                     >
                       <option value="">Select your country…</option>
                       {countries.map((c) => (
                         <option key={c} value={c}>{c}</option>
                       ))}
                     </select>
+                    {errors.country && <p className="text-red-500 text-xs mt-1">{errors.country.message}</p>}
                   </div>
                   <div>
                     <label className="font-body text-sm text-foreground mb-2 block">What kind of animal are you looking to preserve?</label>
                     <select
-                      value={form.animalCategory}
-                      onChange={(e) => setForm({ ...form, animalCategory: e.target.value })}
+                      {...register("animalCategory")}
                       className="w-full bg-gray-dark border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-gray-light transition-colors appearance-none"
                     >
                       <option value="">Select category</option>
@@ -135,21 +121,21 @@ const Contact = () => {
                 <div>
                   <label className="font-body text-sm text-foreground mb-2 block">Message*</label>
                   <textarea
-                    required
+                    {...register("message")}
                     rows={5}
                     placeholder="Type your message..."
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full bg-gray-dark border border-border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors resize-none"
+                    className={`w-full bg-gray-dark border rounded-lg px-4 py-3 font-body text-sm text-foreground placeholder:text-gray-medium focus:outline-none focus:border-gray-light transition-colors resize-none ${errors.message ? 'border-red-500' : 'border-border'}`}
                   />
+                  {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full font-body text-sm px-8 py-4 bg-foreground text-background hover:bg-background hover:text-foreground border border-foreground transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full font-body text-sm px-8 py-4 bg-foreground text-background hover:bg-background hover:text-foreground border border-foreground transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Now
+                  {isSubmitting ? "Sending..." : "Submit Now"}
                 </motion.button>
               </form>
             </div>
