@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Clone Taxidermy — Price Calculator</title>
+  <meta name="description" content="Get an instant price estimate for taxidermy mounts and global shipping. Wild Clone Taxidermy — Capture the Moment." />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #000000;
+      --surface:   #0a0a0a;
+      --card:      #0d0d0d;
+      --card-hover:#131313;
+      --border:    #1e1e1e;
+      --border-hi: #2e2e2e;
+      --text:      #ffffff;
+      --muted:     #666666;
+      --dim:       #333333;
+      --white:     #ffffff;
+      --black:     #000000;
+      --radius:    4px;
+      /* Animation Easing */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pillSelect {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.96); }
+      100% { transform: scale(1); }
+    }
+
+    body {
+
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── NAV / HEADER ── */
+    header {
+      width: 100%;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      display: block;
+      /* The PNG has a light grey background, filter makes it crisp on black */
+      filter: brightness(0) invert(1);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 72px 20px 48px;
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── CALCULATOR CARD ── */
+    .calc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      width: min(720px, calc(100% - 32px));
+      margin-bottom: 64px;
+    }
+
+    /* ── STEPS ── */
+    .step { margin-bottom: 32px; }
+
+    .step-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── PILL GRID ── */
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .pill {
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      border-radius: 2px;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+      user-select: none;
+      letter-spacing: 0.03em;
+      position: relative;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .pill:hover {
+      border-color: var(--muted);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .pill:active {
+      transform: scale(0.97);
+    }
+
+    .pill.selected {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--black);
+      font-weight: 700;
+      animation: pillSelect 0.3s var(--ease-out);
+    }
+
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* ── CRATING SECTION ── */
+    .step-optional-badge {
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border-hi);
+      border-radius: 2px;
+      padding: 2px 7px;
+    }
+
+    .dest-toggle-wrap {
+      margin-bottom: 20px;
+    }
+
+    .dest-toggle-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .destination-toggle {
+      display: inline-flex;
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .dest-btn {
+      padding: 10px 26px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .dest-btn:not(:last-child) { border-right: 1px solid var(--border-hi); }
+
+    .dest-btn:hover {
+      color: var(--text);
+      background: #111;
+    }
+
+    .dest-btn.active {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* Crate grid */
+    .crate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .crate-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 22px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .crate-card:hover {
+      border-color: var(--muted);
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    .crate-card:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .crate-card.selected {
+      border-color: var(--white);
+      background: var(--card-hover);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .crate-card.selected::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--white);
+      animation: fadeInUp 0.4s var(--ease-out);
+    }
+
+
+    .crate-dims {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+
+    .crate-size-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .crate-contents {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+
+    .crate-contents li {
+      font-size: 0.73rem;
+      font-weight: 400;
+      color: var(--muted);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .crate-contents li:last-child { border-bottom: none; }
+
+    .crate-contents li::before {
+      content: '';
+      width: 3px;
+      height: 3px;
+      background: var(--dim);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .crate-card.selected .crate-contents li::before {
+      background: var(--white);
+    }
+
+    .crate-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .crate-currency {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .crate-amount {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .crate-amount.updating {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    .crate-price-note {
+      font-size: 0.52rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .crate-breakdown {
+      margin: 12px 0;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .breakdown-item span {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── RESULT ── */
+    #result-section { 
+      display: none; 
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+    #result-section.visible { 
+      display: block; 
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.6s var(--ease-out);
+    }
+
+
+    .result-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .result-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .result-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .price-badge {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 16px 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .price-badge .range {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .price-badge .sublabel {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+      margin-top: 5px;
+    }
+
+    /* ── BREAKDOWN ── */
+    .breakdown {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      font-size: 0.8rem;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeInUp 0.4s var(--ease-out) forwards;
+    }
+
+    .breakdown-row:nth-child(1) { animation-delay: 0.1s; }
+    .breakdown-row:nth-child(2) { animation-delay: 0.15s; }
+    .breakdown-row:nth-child(3) { animation-delay: 0.2s; }
+    .breakdown-row:nth-child(4) { animation-delay: 0.25s; }
+    .breakdown-row:nth-child(5) { animation-delay: 0.3s; }
+    .breakdown-row:nth-child(6) { animation-delay: 0.35s; }
+    .breakdown-row:nth-child(7) { animation-delay: 0.4s; }
+
+    .breakdown-row:last-child { border-bottom: none; }
+
+
+    .breakdown-row .key {
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .breakdown-row .val {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .note {
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .note strong { color: var(--text); font-weight: 600; }
+
+    /* ── CTA ── */
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 2px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      flex: 1;
+    }
+
+    .btn-primary:hover { background: #e0e0e0; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border-hi);
+    }
+
+    .btn-secondary:hover { border-color: var(--dim); color: var(--text); }
+
+    /* ── PLACEHOLDER ── */
+    .placeholder-msg {
+      text-align: center;
+      padding: 28px 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.6;
+      width: 100%;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── MULTIPLE ANIMAL SELECTION ── */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .animal-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+      position: relative;
+    }
+
+    .animal-row-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .animal-row-field label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .select-input {
+      background: var(--bg);
+      border: 1px solid var(--border-hi);
+      border-radius: 2px;
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      transition: border-color 0.2s;
+    }
+
+    .select-input:hover { border-color: var(--muted); }
+    .select-input:focus { border-color: var(--white); outline: none; }
+
+    .remove-btn {
+      background: rgba(255,50,50,0.1);
+      color: #ff5555;
+      border: 1px solid rgba(255,50,50,0.2);
+      border-radius: 2px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .remove-btn:hover { background: #ff3333; color: white; border-color: #ff3333; }
+
+    .add-row-btn {
+      background: transparent;
+      border: 1px dashed var(--border-hi);
+      border-radius: var(--radius);
+      color: var(--muted);
+      padding: 12px;
+      width: 100%;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .add-row-btn:hover { border-color: var(--muted); color: var(--text); background: rgba(255,255,255,0.02); }
+
+    .row-price {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .grand-total-section {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .total-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .total-amount {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 560px) {
+      .animal-row { grid-template-columns: 1fr; }
+      .remove-btn { width: 100%; height: 36px; }
+      .total-amount { font-size: 1.8rem; }
+    }
+    /* Hide standalone header & footer when embedded in iframe */
+  body.embedded header, body.embedded footer { display: none !important; }
+  /* Always hide when served as embedded tool */
+  header { display: none !important; }
+  footer { display: none !important; }
+  body { padding-top: 0 !important; }
+</style>
+</head>
+<body>
+
+
+
+<!-- CALCULATOR CARD -->
+<div class="calc-card">
+
+  <!-- STEP 1 & 2 — MULTIPLE ANIMALS -->
+  <div class="step">
+    <div class="step-label">Step 1 — Items</div>
+    <h3>Select Taxidermy Items</h3>
+    <div id="item-list-container" class="item-list"></div>
+    <button class="add-row-btn" onclick="addItemRow()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      Add Another Animal / Item
+    </button>
+  </div>
+
+  <hr class="divider" />
+
+
+  <!-- STEP 4 — CRATING -->
+  <div class="step">
+    <div class="step-label">
+      Step 4
+      <span class="step-optional-badge">Optional</span>
+    </div>
+    <h3>Global Shipping</h3>
+
+    <div class="dest-toggle-wrap">
+      <div class="dest-toggle-label">LOCATION</div>
+      <div class="destination-toggle">
+        <button class="dest-btn" data-dest="us" onclick="selectDestination(this)">USA</button>
+        <button class="dest-btn" data-dest="ca" onclick="selectDestination(this)">Canada</button>
+        <button class="dest-btn" data-dest="uk" onclick="selectDestination(this)">UK &amp; Europe</button>
+      </div>
+    </div>
+
+    <div class="crate-grid">
+
+      <div class="crate-card" data-crate="0" onclick="selectCrate(this)">
+        <div class="crate-dims">800 × 550 × 550mm</div>
+        <div class="crate-size-label">Small Crate</div>
+        <ul class="crate-contents">
+          <li>2× European Mounts</li>
+          <li>2× Flat / Back Skins</li>
+        </ul>
+        <div class="crate-breakdown">
+          <div class="breakdown-item">Shipping Fee <span id="crate-ship-0">—</span></div>
+          <div class="breakdown-item">Clearance Fee <span id="crate-clear-0">—</span></div>
+        </div>
+        <div class="crate-price-row">
+          <span class="crate-currency">USD</span>
+          <span class="crate-amount" id="crate-price-0">—</span>
+        </div>
+        <div class="crate-price-note">Incl. Clearance &amp; Delivery to Warehouse at Port of Entry</div>
+      </div>
+
+      <div class="crate-card" data-crate="1" onclick="selectCrate(this)">
+        <div class="crate-dims">1100 × 1100 × 800mm</div>
+        <div class="crate-size-label">Medium Crate</div>
+        <ul class="crate-contents">
+          <li>2× European Mounts</li>
+          <li>4× Flat / Back Skins</li>
+          <li>2× Shoulder Mounts</li>
+        </ul>
+        <div class="crate-breakdown">
+          <div class="breakdown-item">Shipping Fee <span id="crate-ship-1">—</span></div>
+          <div class="breakdown-item">Clearance Fee <span id="crate-clear-1">—</span></div>
+        </div>
+        <div class="crate-price-row">
+          <span class="crate-currency">USD</span>
+          <span class="crate-amount" id="crate-price-1">—</span>
+        </div>
+        <div class="crate-price-note">Incl. Clearance &amp; Delivery to Warehouse at Port of Entry</div>
+      </div>
+
+      <div class="crate-card" data-crate="2" onclick="selectCrate(this)">
+        <div class="crate-dims">1100 × 1100 × 1100mm</div>
+        <div class="crate-size-label">Large Crate</div>
+        <ul class="crate-contents">
+          <li>2× European Mounts</li>
+          <li>6× Flat / Back Skins</li>
+          <li>4× Shoulder Mounts</li>
+        </ul>
+        <div class="crate-breakdown">
+          <div class="breakdown-item">Shipping Fee <span id="crate-ship-2">—</span></div>
+          <div class="breakdown-item">Clearance Fee <span id="crate-clear-2">—</span></div>
+        </div>
+        <div class="crate-price-row">
+          <span class="crate-currency">USD</span>
+          <span class="crate-amount" id="crate-price-2">—</span>
+        </div>
+        <div class="crate-price-note">Incl. Clearance &amp; Delivery to Warehouse at Port of Entry</div>
+      </div>
+
+      <div class="crate-card" data-crate="3" onclick="selectCrate(this)">
+        <div class="crate-dims">1100 × 1100 × 1600mm</div>
+        <div class="crate-size-label">Extra Large Crate</div>
+        <ul class="crate-contents">
+          <li>6× European Mounts</li>
+          <li>8× Flat / Back Skins</li>
+          <li>6× Shoulder Mounts</li>
+        </ul>
+        <div class="crate-breakdown">
+          <div class="breakdown-item">Shipping Fee <span id="crate-ship-3">—</span></div>
+          <div class="breakdown-item">Clearance Fee <span id="crate-clear-3">—</span></div>
+        </div>
+        <div class="crate-price-row">
+          <span class="crate-currency">USD</span>
+          <span class="crate-amount" id="crate-price-3">—</span>
+        </div>
+        <div class="crate-price-note">Incl. Clearance &amp; Delivery to Warehouse at Port of Entry</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" id="divider-result" style="display:none;" />
+
+  <!-- RESULT -->
+  <div id="result-section">
+    <div class="result-header">
+      <div>
+        <div class="result-label">Estimate Ready</div>
+        <div class="result-title" id="result-title"></div>
+      </div>
+      <div class="price-badge">
+        <div class="range" id="price-range"></div>
+        <div class="sublabel" id="price-sublabel">Taxidermy Estimate (USD)</div>
+      </div>
+    </div>
+
+    <div class="breakdown" id="breakdown"></div>
+
+    <p class="note" id="result-note"></p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:info@wildclonetaxidermy.com?subject=Quote%20Request" id="cta-email">
+        Request a Formal Quote
+      </a>
+      <button class="btn btn-secondary" onclick="resetCalc()">Start Over</button>
+    </div>
+  </div>
+
+  <div id="placeholder-main" class="placeholder-msg">
+    Make your selections above to see your price estimate.
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Taxidermy estimates are in USD and assume average specimen condition. Final pricing may vary based on hide quality, pose complexity, and custom requests.<br/>
+  Price excludes delivery to door and is to a single warehouse (generally Houston in the US, or closest to port of clearing). It does include clearance.<br/>
+  Crating prices INCL CLEARANCE AND DELIVERY TO WAREHOUSE AT PORT OF ENTRY &nbsp;·&nbsp; &copy; 2025
+  <a href="https://www.wildclone.com" target="_blank" rel="noopener">Wild Clone Taxidermy</a>. All rights reserved. &nbsp;·&nbsp;
+  <a href="https://www.wildclone.com/fulfilment-policy" target="_blank" rel="noopener">Fulfilment Policy</a>
+</footer>
+
+<script>
+/* ─────────────────────────────
+   TAXIDERMY DATA
+───────────────────────────────*/
+const ANIMALS = [
+  { id: 'baboon', label: 'Baboon' },
+  { id: 'barbary_sheep', label: 'Barbary Sheep' },
+  { id: 'black_wildebeest', label: 'Black Wildebeest' },
+  { id: 'blesbuck', label: 'Blesbuck' },
+  { id: 'blue_duiker', label: 'Blue Duiker' },
+  { id: 'blue_wildebeest', label: 'Blue Wildebeest' },
+  { id: 'bontebok', label: 'Bontebok' },
+  { id: 'bushbuck', label: 'Bushbuck' },
+  { id: 'bushpig', label: 'Bushpig' },
+  { id: 'cape_buffalo', label: 'Cape Buffalo' },
+  { id: 'cheetah', label: 'Cheetah' },
+  { id: 'common_reedbuck', label: 'Common Reedbuck' },
+  { id: 'crocodile', label: 'Crocodile' },
+  { id: 'dassie', label: 'Dassie' },
+  { id: 'duiker_common_red', label: 'Duiker (Common & Red)' },
+  { id: 'eland', label: 'Eland' },
+  { id: 'elephant', label: 'Elephant' },
+  { id: 'fallow_deer', label: 'Fallow Deer' },
+  { id: 'foxes', label: 'Foxes' },
+  { id: 'gemsbuck', label: 'Gemsbuck' },
+  { id: 'genet', label: 'Genet' },
+  { id: 'giraffe', label: 'Giraffe' },
+  { id: 'grysbuck', label: 'Grysbuck' },
+  { id: 'hippopotamus', label: 'Hippopotamus' },
+  { id: 'hyena', label: 'Hyena' },
+  { id: 'impala', label: 'Impala' },
+  { id: 'jackal', label: 'Jackal' },
+  { id: 'klipspringer', label: 'Klipspringer' },
+  { id: 'kudu', label: 'Kudu' },
+  { id: 'lechwe', label: 'Lechwe' },
+  { id: 'leopard', label: 'Leopard' },
+  { id: 'lion', label: 'Lion' },
+  { id: 'lynx', label: 'Lynx' },
+  { id: 'mountain_reedbuck', label: 'Mountain Reedbuck' },
+  { id: 'nyala', label: 'Nyala' },
+  { id: 'oribi', label: 'Oribi' },
+  { id: 'ostrich', label: 'Ostrich' },
+  { id: 'porcupine', label: 'Porcupine' },
+  { id: 'red_hartebeest', label: 'Red Hartebeest' },
+  { id: 'rhino', label: 'Rhino' },
+  { id: 'roan', label: 'Roan' },
+  { id: 'sable', label: 'Sable' },
+  { id: 'sitatunga', label: 'Sitatunga' },
+  { id: 'springbuck', label: 'Springbuck' },
+  { id: 'springhare', label: 'Springhare' },
+  { id: 'steenbuck', label: 'Steenbuck' },
+  { id: 'suni', label: 'Suni' },
+  { id: 'vaal_rhebuck', label: 'Vaal Rhebuck' },
+  { id: 'vervet_monkey', label: 'Vervet Monkey' },
+  { id: 'warthog', label: 'Warthog' },
+  { id: 'waterbuck', label: 'Waterbuck' },
+  { id: 'zebra', label: 'Zebra' },
+];
+
+const MOUNTS = [
+  { id: 'bleached_skull', label: 'Bleached Skull' },
+  { id: 'european_mount', label: 'European Mount' },
+  { id: 'shoulder_mount', label: 'Shoulder Mount' },
+  { id: 'pedestal_wall',  label: 'Pedestal Mount (Wall)' },
+  { id: 'pedestal_floor', label: 'Pedestal Mount (Floor)' },
+  { id: 'full_mount',     label: 'Full Mount' },
+  { id: 'half_mount',     label: 'Half Mount' },
+  { id: 'shield_3d',      label: 'African 3D Shield' },
+  { id: 'flat_skin',      label: 'Tanning (Flat Skin)' },
+  { id: 'back_skin',      label: 'Tanning (Back Skin)' },
+];
+
+const DIRECTIONS = [
+  { id: 'straight', label: 'Looking Straight' },
+  { id: 'l18',      label: '1/8 Turn — Left' },
+  { id: 'l14',      label: '1/4 Turn — Left' },
+  { id: 'l12',      label: '1/2 Turn — Left' },
+  { id: 'r18',      label: '1/8 Turn — Right' },
+  { id: 'r14',      label: '1/4 Turn — Right' },
+  { id: 'r12',      label: '1/2 Turn — Right' },
+];
+
+const PEDESTAL_DIRECTIONS = [
+  { id: 'l_exposed', label: 'Left Shoulder Exposed' },
+  { id: 'r_exposed', label: 'Right Shoulder Exposed' },
+  { id: 'straight',  label: 'Straight Into Room' },
+];
+
+const POSITIONS = [
+  { id: 'upright',    label: 'Upright' },
+  { id: 'semi_sneak', label: 'Semi-Sneak' },
+  { id: 'sneak',      label: 'Sneak position' },
+];
+
+const POSES = []; // Legacy, replaced by granular options
+
+const PRICE_DATA = {
+  baboon: { bleached_skull: 188, european_mount: 203, shoulder_mount: 535, pedestal_wall: 589, pedestal_floor: 771, full_mount: 1642, half_mount: 821, flat_skin: 150, back_skin: 90 },
+  barbary_sheep: { bleached_skull: 203, european_mount: 230, shoulder_mount: 738, pedestal_wall: 812, pedestal_floor: 1058, full_mount: 3172, half_mount: 1533, flat_skin: 180, back_skin: 110 },
+  black_wildebeest: { bleached_skull: 246, european_mount: 353, shoulder_mount: 872, pedestal_wall: 958, pedestal_floor: 1218, full_mount: 4127, half_mount: 2064, flat_skin: 320, back_skin: 210 },
+  blesbuck: { bleached_skull: 150, european_mount: 210, shoulder_mount: 567, pedestal_wall: 620, pedestal_floor: 810, full_mount: 2272, half_mount: 1136, flat_skin: 170, back_skin: 100 },
+  blue_duiker: { bleached_skull: 129, european_mount: 225, shoulder_mount: 567, pedestal_wall: 620, pedestal_floor: 810, full_mount: 1043, half_mount: 522, flat_skin: 100, back_skin: 60 },
+  blue_wildebeest: { bleached_skull: 262, european_mount: 321, shoulder_mount: 919, pedestal_wall: 1011, pedestal_floor: 1275, full_mount: 4951, half_mount: 2475, flat_skin: 350, back_skin: 220 },
+  bontebok: { bleached_skull: 246, european_mount: 295, shoulder_mount: 701, pedestal_wall: 770, pedestal_floor: 971, full_mount: 2422, half_mount: 1212, flat_skin: 170, back_skin: 100 },
+  bushbuck: { bleached_skull: 150, european_mount: 210, shoulder_mount: 535, pedestal_wall: 589, pedestal_floor: 771, full_mount: 2305, half_mount: 1152, flat_skin: 150, back_skin: 90 },
+  bushpig: { bleached_skull: 210, european_mount: 284, shoulder_mount: 567, pedestal_wall: 620, pedestal_floor: 810, full_mount: 1781, half_mount: 891, flat_skin: 200, back_skin: 120 },
+  cape_buffalo: { bleached_skull: 337, european_mount: 423, shoulder_mount: 1225, pedestal_wall: 1347, pedestal_floor: 1686, full_mount: 5656, half_mount: 2829, flat_skin: 650, back_skin: 450 },
+  cheetah: { bleached_skull: 337, european_mount: 423, shoulder_mount: 1150, pedestal_wall: 1268, pedestal_floor: 1553, full_mount: 3892, half_mount: 1946, flat_skin: 300, back_skin: 180 },
+  common_reedbuck: { bleached_skull: 210, european_mount: 257, shoulder_mount: 648, pedestal_wall: 716, pedestal_floor: 950, full_mount: 2466, half_mount: 1233, flat_skin: 180, back_skin: 110 },
+  crocodile: { bleached_skull: 509, shoulder_mount: 989, flat_skin: 250, back_skin: 150 },
+  dassie: { bleached_skull: 92, european_mount: 123, full_mount: 438, half_mount: 219, flat_skin: 50, back_skin: 30 },
+  duiker_common_red: { bleached_skull: 92, european_mount: 123, shoulder_mount: 482, pedestal_wall: 535, pedestal_floor: 707, full_mount: 1022, half_mount: 511, flat_skin: 100, back_skin: 60 },
+  eland: { bleached_skull: 262, european_mount: 310, shoulder_mount: 1144, pedestal_wall: 1261, pedestal_floor: 1589, full_mount: 5165, half_mount: 2582, flat_skin: 450, back_skin: 280 },
+  elephant: { bleached_skull: 674, shoulder_mount: 6148, pedestal_floor: 7703, full_mount: "POA", half_mount: "POA" },
+  fallow_deer: { bleached_skull: 150, european_mount: 210, shoulder_mount: 545, pedestal_wall: 598, pedestal_floor: 784, full_mount: 2192, half_mount: 1096, flat_skin: 180, back_skin: 110 },
+  foxes: { bleached_skull: 92, european_mount: 123, shoulder_mount: 423, pedestal_wall: 460, pedestal_floor: 637, full_mount: 620, half_mount: 310, flat_skin: 90, back_skin: 50 },
+  gemsbuck: { bleached_skull: 181, european_mount: 241, shoulder_mount: 834, pedestal_wall: 919, pedestal_floor: 1173, full_mount: 4940, half_mount: 2470, flat_skin: 350, back_skin: 210 },
+  genet: { bleached_skull: 92, european_mount: 123, full_mount: 589, half_mount: 295 },
+  giraffe: { bleached_skull: 337, european_mount: 438, shoulder_mount: 2641, pedestal_wall: 2903, pedestal_floor: 3493, full_mount: 13472, half_mount: 6736 },
+  grysbuck: { bleached_skull: 92, european_mount: 123, shoulder_mount: 482, pedestal_wall: 535, pedestal_floor: 707, full_mount: 1022, half_mount: 511 },
+  hippopotamus: { bleached_skull: 509, shoulder_mount: 3155, pedestal_floor: 4109, full_mount: "POA", half_mount: "POA" },
+  hyena: { bleached_skull: 337, european_mount: 406, shoulder_mount: 1069, pedestal_wall: 1192, pedestal_floor: 1456, full_mount: 2970, half_mount: 1121 },
+  impala: { bleached_skull: 139, european_mount: 210, shoulder_mount: 530, pedestal_wall: 589, pedestal_floor: 766, full_mount: 2198, half_mount: 1099, flat_skin: 170, back_skin: 100 },
+  jackal: { bleached_skull: 92, european_mount: 123, shoulder_mount: 487, pedestal_wall: 535, pedestal_floor: 714, full_mount: 851, half_mount: 426, flat_skin: 100, back_skin: 60 },
+  klipspringer: { bleached_skull: 92, european_mount: 123, shoulder_mount: 487, pedestal_wall: 535, pedestal_floor: 714, full_mount: 1022, half_mount: 511, flat_skin: 100, back_skin: 60 },
+  kudu: { bleached_skull: 220, european_mount: 295, shoulder_mount: 941, pedestal_wall: 1048, pedestal_floor: 1301, full_mount: 5052, half_mount: 2526, flat_skin: 380, back_skin: 220 },
+  lechwe: { bleached_skull: 203, european_mount: 230, shoulder_mount: 738, pedestal_wall: 812, pedestal_floor: 1058, full_mount: 3064, half_mount: 1532 },
+  leopard: { bleached_skull: 337, european_mount: 406, shoulder_mount: 1150, pedestal_wall: 1268, pedestal_floor: 1553, full_mount: 3705, half_mount: 1853 },
+  lion: { bleached_skull: 449, european_mount: 530, shoulder_mount: 1685, pedestal_wall: 1839, pedestal_floor: 2238, full_mount: 4438, half_mount: 2219 },
+  lynx: { bleached_skull: 139, european_mount: 177, shoulder_mount: 535, pedestal_wall: 589, pedestal_floor: 771, full_mount: 1236, half_mount: 618 },
+  mountain_reedbuck: { bleached_skull: 139, european_mount: 210, shoulder_mount: 530, pedestal_wall: 583, pedestal_floor: 766, full_mount: 1796, half_mount: 899 },
+  nyala: { bleached_skull: 171, european_mount: 230, shoulder_mount: 738, pedestal_wall: 812, pedestal_floor: 1058, full_mount: 3032, half_mount: 1516 },
+  oribi: { bleached_skull: 171, european_mount: 214, shoulder_mount: 598, pedestal_wall: 658, pedestal_floor: 848, full_mount: 1183, half_mount: 592 },
+  ostrich: { bleached_skull: 139, european_mount: 210, shoulder_mount: 969, full_mount: 3705, half_mount: 1853 },
+  porcupine: { bleached_skull: 139, european_mount: 210, full_mount: 969, half_mount: 485 },
+  red_hartebeest: { bleached_skull: 181, european_mount: 241, shoulder_mount: 765, pedestal_wall: 845, pedestal_floor: 1091, full_mount: 4458, half_mount: 2229 },
+  rhino: { bleached_skull: 509, shoulder_mount: 3475, full_mount: 12830, half_mount: 6415 },
+  roan: { bleached_skull: 278, european_mount: 327, shoulder_mount: 1048, pedestal_wall: 1155, pedestal_floor: 1473, full_mount: 5165, half_mount: 2582 },
+  sable: { bleached_skull: 278, european_mount: 327, shoulder_mount: 1048, pedestal_wall: 1155, pedestal_floor: 1430, full_mount: 5165, half_mount: 2582, shield_3d: 1283, flat_skin: 380, back_skin: 240 },
+  sitatunga: { bleached_skull: 210, european_mount: 273, shoulder_mount: 738, pedestal_wall: 812, pedestal_floor: 1058, full_mount: 3064, half_mount: 1533, flat_skin: 310, back_skin: 210 },
+  springbuck: { bleached_skull: 139, european_mount: 210, shoulder_mount: 519, pedestal_wall: 578, pedestal_floor: 753, full_mount: 1796, half_mount: 899, flat_skin: 180, back_skin: 95 },
+  springhare: { bleached_skull: 92, european_mount: 123, full_mount: 567, half_mount: 284, flat_skin: 110, back_skin: 70 },
+  steenbuck: { bleached_skull: 92, european_mount: 123, shoulder_mount: 482, pedestal_wall: 535, pedestal_floor: 707, full_mount: 1022, half_mount: 511, flat_skin: 110, back_skin: 70 },
+  suni: { bleached_skull: 129, european_mount: 188, shoulder_mount: 519, pedestal_wall: 578, pedestal_floor: 753, full_mount: 1022, half_mount: 511, flat_skin: 110, back_skin: 70 },
+  vaal_rhebuck: { bleached_skull: 107, european_mount: 150, shoulder_mount: 509, pedestal_wall: 562, pedestal_floor: 740, full_mount: 1796, half_mount: 899, flat_skin: 150, back_skin: 90 },
+  vervet_monkey: { bleached_skull: 156, european_mount: 188, shoulder_mount: 491, pedestal_wall: 551, pedestal_floor: 719, full_mount: 930, half_mount: 465, flat_skin: 140, back_skin: 80 },
+  warthog: { bleached_skull: 278, european_mount: 327, shoulder_mount: 556, pedestal_wall: 609, pedestal_floor: 797, full_mount: 1828, half_mount: 915, flat_skin: 220, back_skin: 120 },
+  waterbuck: { bleached_skull: 220, european_mount: 327, shoulder_mount: 1005, pedestal_wall: 1107, pedestal_floor: 1379, full_mount: 5165, half_mount: 2582, flat_skin: 350, back_skin: 220 },
+  zebra: { bleached_skull: 241, european_mount: 327, shoulder_mount: 877, pedestal_wall: 969, pedestal_floor: 1225, full_mount: 5165, half_mount: 2582, flat_skin: 380, back_skin: 220 }
+};
+
+/* ─────────────────────────────
+   CRATING DATA
+───────────────────────────────*/
+const CRATE_SHIPPING = {
+  us: [300, 1200, 1660, 2300],
+  ca: [275, 1100, 1500, 2200],
+  uk: [225, 900, 1400, 2000],
+};
+const CRATE_CLEARING = {
+  us: [940, 940, 940, 940],
+  ca: [885, 885, 885, 885],
+  uk: [660, 660, 660, 660],
+};
+const CRATE_PRICES = {
+  us: [1240, 2140, 2600, 3240],
+  ca: [1160, 1985, 2385, 3085],
+  uk: [885, 1560, 2060, 2660],
+};
+
+const CRATE_INFO = [
+  { label: 'Small Crate',  dims: '800 × 550 × 550mm' },
+  { label: 'Medium Crate', dims: '1100 × 1100 × 800mm' },
+  { label: 'Large Crate',  dims: '1100 × 1100 × 1100mm' },
+  { label: 'X-Large Crate',dims: '1100 × 1100 × 1600mm' },
+];
+
+const DEST_LABELS = { us: 'USA', ca: 'Canada', uk: 'UK & Europe' };
+
+/* ─────────────────────────────
+   STATE
+───────────────────────────────*/
+let addedAnimals = []; // { id, animalId, mountId }
+let selectedDest  = null;
+let selectedCrate = null;
+
+/* ─────────────────────────────
+   INIT
+───────────────────────────────*/
+function init() {
+  addItemRow(); // Start with one row
+  updateCratePrices();
+}
+
+function addItemRow() {
+  const id = Date.now() + Math.random().toString(36).substr(2, 9);
+  addedAnimals.push({ id, animalId: '', mountId: '' });
+  renderItems();
+  updateResult();
+}
+
+function removeItemRow(id) {
+  if (addedAnimals.length <= 1) return;
+  addedAnimals = addedAnimals.filter(a => a.id !== id);
+  renderItems();
+  updateResult();
+}
+
+function updateItem(id, field, value) {
+  const item = addedAnimals.find(a => a.id === id);
+  if (item) {
+    item[field] = value;
+    if (field === 'animalId') {
+      item.mountId = ''; // Reset mount if animal changes
+    }
+    renderItems();
+    updateResult();
+  }
+}
+
+/* ─────────────────────────────
+   RENDER ITEMS
+───────────────────────────────*/
+function renderItems() {
+  const container = document.getElementById('item-list-container');
+  container.innerHTML = '';
+
+  addedAnimals.forEach((item, index) => {
+    const row = document.createElement('div');
+    row.className = 'animal-row';
+    
+    // Animal Select
+    const animalField = document.createElement('div');
+    animalField.className = 'animal-row-field';
+    animalField.innerHTML = `<label>Animal Species</label>`;
+    const animalSelect = document.createElement('select');
+    animalSelect.className = 'select-input';
+    animalSelect.innerHTML = `<option value="">Select Animal...</option>` + 
+      ANIMALS.map(a => `<option value="${a.id}" ${item.animalId === a.id ? 'selected' : ''}>${a.label}</option>`).join('');
+    animalSelect.addEventListener('change', (e) => updateItem(item.id, 'animalId', e.target.value));
+    animalField.appendChild(animalSelect);
+
+    // Mount Select
+    const mountField = document.createElement('div');
+    mountField.className = 'animal-row-field';
+    mountField.innerHTML = `<label>Mount Style</label>`;
+    const mountSelect = document.createElement('select');
+    mountSelect.className = 'select-input';
+    mountSelect.disabled = !item.animalId;
+    
+    if (item.animalId) {
+      const availableMounts = MOUNTS.filter(m => {
+        if (m.id === 'shield_3d') return PRICE_DATA[item.animalId] && (PRICE_DATA[item.animalId]['shield_3d'] || PRICE_DATA[item.animalId]['bleached_skull']);
+        if (m.id === 'flat_skin' || m.id === 'back_skin') return true;
+        return PRICE_DATA[item.animalId] && PRICE_DATA[item.animalId][m.id];
+      });
+      mountSelect.innerHTML = `<option value="">Select Mount Style...</option>` + 
+        availableMounts.map(m => `<option value="${m.id}" ${item.mountId === m.id ? 'selected' : ''}>${m.label}</option>`).join('');
+    } else {
+      mountSelect.innerHTML = `<option value="">Select animal first</option>`;
+    }
+    mountSelect.addEventListener('change', (e) => updateItem(item.id, 'mountId', e.target.value));
+    mountField.appendChild(mountSelect);
+
+    row.appendChild(animalField);
+    row.appendChild(mountField);
+
+    // Remove Button
+    if (addedAnimals.length > 1) {
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+      removeBtn.onclick = () => removeItemRow(item.id);
+      row.appendChild(removeBtn);
+    }
+
+    // Individual Price (Optional, shows if valid)
+    if (item.animalId && item.mountId) {
+      let price = PRICE_DATA[item.animalId][item.mountId];
+      if (item.mountId === 'shield_3d' && !price) {
+        price = PRICE_DATA[item.animalId]['bleached_skull'] ? PRICE_DATA[item.animalId]['bleached_skull'] + 150 : 'POA';
+      }
+      const priceLabel = document.createElement('div');
+      priceLabel.className = 'row-price';
+      priceLabel.textContent = (price && typeof price === 'number') ? `$${price.toLocaleString()}` : (price || 'POA');
+      row.appendChild(priceLabel);
+    }
+
+    container.appendChild(row);
+  });
+}
+
+/* ─────────────────────────────
+   DESTINATION
+───────────────────────────────*/
+function selectDestination(btn) {
+  selectedDest = btn.dataset.dest;
+  document.querySelectorAll('.dest-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateCratePrices();
+  updateResult();
+}
+
+/* ─────────────────────────────
+   CRATE
+───────────────────────────────*/
+function selectCrate(card) {
+  const crateId = parseInt(card.dataset.crate, 10);
+  if (selectedCrate === crateId) {
+    selectedCrate = null;
+    card.classList.remove('selected');
+  } else {
+    selectedCrate = crateId;
+    document.querySelectorAll('.crate-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+  updateResult();
+}
+
+/* ─────────────────────────────
+   UPDATE CRATE PRICES
+───────────────────────────────*/
+function updateCratePrices() {
+  if (!selectedDest) {
+    for (let i = 0; i < 4; i++) {
+       const el = document.getElementById(`crate-price-${i}`);
+       if (el) el.textContent = '—';
+       const shipEl = document.getElementById(`crate-ship-${i}`);
+       if (shipEl) shipEl.textContent = '—';
+       const clearEl = document.getElementById(`crate-clear-${i}`);
+       if (clearEl) clearEl.textContent = '—';
+    }
+    return;
+  }
+
+  const prices = CRATE_PRICES[selectedDest];
+  const ships = CRATE_SHIPPING[selectedDest];
+  const clears = CRATE_CLEARING[selectedDest];
+
+  prices.forEach((p, i) => {
+    const el = document.getElementById(`crate-price-${i}`);
+    const shipEl = document.getElementById(`crate-ship-${i}`);
+    const clearEl = document.getElementById(`crate-clear-${i}`);
+
+    if (el) {
+      el.classList.add('updating');
+      setTimeout(() => {
+        el.textContent = fmt(p);
+        if (shipEl) shipEl.textContent = '$' + fmt(ships[i]);
+        if (clearEl) clearEl.textContent = '$' + fmt(clears[i]);
+        el.classList.remove('updating');
+        sendHeight(); // Resync iframe height after DOM update
+      }, 200);
+    }
+  });
+}
+
+/* ─────────────────────────────
+   UPDATE RESULT
+───────────────────────────────*/
+function updateResult() {
+  const validItems = addedAnimals.filter(i => i.animalId && i.mountId);
+  if (validItems.length === 0) {
+    hideResult();
+    return;
+  }
+
+  let taxidermyTotal = 0;
+  let hasPOA = false;
+
+  const rows = [];
+  validItems.forEach(item => {
+    const animal = ANIMALS.find(a => a.id === item.animalId);
+    const mount  = MOUNTS.find(m => m.id === item.mountId);
+    let price = PRICE_DATA[item.animalId][item.mountId];
+    if (item.mountId === 'shield_3d' && !price) {
+      price = PRICE_DATA[item.animalId]['bleached_skull'] ? PRICE_DATA[item.animalId]['bleached_skull'] + 150 : 'POA';
+    }
+
+    if (typeof price === 'number') {
+      taxidermyTotal += price;
+    } else {
+      hasPOA = true;
+      price = price || "POA";
+    }
+
+    rows.push([`${animal.label} (${mount.label})`, (typeof price === 'number') ? `$${price.toLocaleString()}` : price]);
+  });
+
+  const hasCrate   = selectedDest !== null && selectedCrate !== null;
+  const cratePrice = hasCrate ? CRATE_PRICES[selectedDest][selectedCrate] : 0;
+  const crateInfo  = hasCrate ? CRATE_INFO[selectedCrate] : null;
+
+  const grandTotal = taxidermyTotal + cratePrice;
+  const totalDisplay = hasPOA ? 'POA' : `$${grandTotal.toLocaleString()}`;
+
+  document.getElementById('result-title').textContent = `${validItems.length} Item(s) Selected`;
+  document.getElementById('price-range').textContent  = totalDisplay;
+
+  if (hasCrate) {
+    rows.push(['Shipping (' + crateInfo.label + ')', `USD ${fmt(cratePrice)}`]);
+  }
+
+  // Create breakdown HTML with Grand Total highlighted
+  let breakdownHTML = rows.map(([k, v]) => `
+    <div class="breakdown-row">
+      <span class="key">${k}</span>
+      <span class="val">${v}</span>
+    </div>`).join('');
+
+  breakdownHTML += `
+    <div class="grand-total-section">
+      <div class="total-title">Estimated Total</div>
+      <div class="total-amount">${totalDisplay}</div>
+    </div>
+  `;
+
+  document.getElementById('breakdown').innerHTML = breakdownHTML;
+
+  let noteHtml = `<strong>Note:</strong> Taxidermy prices calculator is merely a price guidance and estimation. Please contact our team for more accurate pricing.`;
+  if (hasCrate) noteHtml += ` Crating prices INCL CLEARANCE AND DELIVERY TO WAREHOUSE AT PORT OF ENTRY.`;
+  document.getElementById('result-note').innerHTML = noteHtml;
+
+  const res = document.getElementById('result-section');
+  if (!res.classList.contains('visible')) {
+    res.style.display = 'block';
+    void res.offsetWidth;
+    res.classList.add('visible');
+  }
+
+  document.getElementById('placeholder-main').style.display = 'none';
+  document.getElementById('divider-result').style.display   = '';
+}
+
+/* ─────────────────────────────
+   HIDE RESULT
+───────────────────────────────*/
+function hideResult() {
+  document.getElementById('result-section').classList.remove('visible');
+  document.getElementById('placeholder-main').style.display = '';
+  document.getElementById('divider-result').style.display   = 'none';
+}
+
+/* ─────────────────────────────
+   RESET
+───────────────────────────────*/
+function resetCalc() {
+  addedAnimals = [];
+  selectedDest = selectedCrate = null;
+  document.querySelectorAll('.crate-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.dest-btn').forEach(b => b.classList.remove('active'));
+  addItemRow();
+  updateCratePrices();
+}
+
+/* ─────────────────────────────
+   HELPERS
+───────────────────────────────*/
+function fmt(n) { return n.toLocaleString('en-US'); }
+
+init();
+  // ─── Post Message for Height ───
+  function sendHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+  }
+
+  // Send on load and window resize
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+
+  // Send whenever results section visibility changes or items are added
+  const observer = new MutationObserver(sendHeight);
+  observer.observe(document.body, { 
+    attributes: true, 
+    childList: true, 
+    subtree: true 
+  });
+</script>
+</body>
+</html>

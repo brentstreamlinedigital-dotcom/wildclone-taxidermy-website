@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import FAQSection from "@/components/FAQSection";
@@ -53,7 +54,101 @@ const Contact = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6 lg:px-12">
 
-          {/* Contact Form — first */}
+          {/* ── Calculator Teaser ──────────────────────────────────── */}
+          <AnimatedSection>
+            <div className="max-w-4xl mx-auto mb-16">
+              <div className="relative bg-gray-dark border border-border rounded-2xl overflow-hidden hover:border-gray-medium transition-colors duration-500">
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none" />
+
+                <div className="relative flex flex-col md:flex-row items-center gap-10 p-8 lg:p-12">
+                  {/* Left — copy */}
+                  <div className="flex-1 text-center md:text-left">
+                    <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mb-3">
+                      Free Tool
+                    </p>
+                    <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
+                      Know your costs<br />before you drop off.
+                    </h2>
+                    <p className="font-body text-sm text-muted-foreground mb-6 max-w-sm mx-auto md:mx-0">
+                      Our instant price calculator covers every mount style, every
+                      animal, and optional global shipping — all in one combined estimate.
+                      No guesswork.
+                    </p>
+
+                    {/* Feature bullets */}
+                    <ul className="space-y-2 mb-8 text-left">
+                      {[
+                        "50+ African species",
+                        "All mount styles — shoulder, full, European & more",
+                        "USA/Canada & UK/Europe shipping included",
+                        "Instant itemised breakdown",
+                      ].map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-center gap-3 font-body text-sm text-muted-foreground"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link
+                      to="/calculator"
+                      className="inline-flex items-center gap-2 font-body text-sm px-8 py-4 bg-foreground text-background hover:bg-background hover:text-foreground border border-foreground transition-all duration-300 tracking-widest uppercase"
+                    >
+                      Open Calculator
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+
+                  {/* Right — styled UI skeleton mockup */}
+                  <div className="w-full md:w-64 flex-shrink-0">
+                    <div className="bg-background border border-border rounded-xl p-5 space-y-3">
+                      <div className="h-2 w-1/3 bg-border rounded" />
+                      <div className="h-9 w-full bg-gray-dark border border-border rounded-lg" />
+                      <div className="h-9 w-full bg-gray-dark border border-border rounded-lg" />
+                      <div className="border-t border-border pt-3 space-y-2">
+                        <div className="flex justify-between items-center">
+                          <div className="h-2 w-2/5 bg-border rounded" />
+                          <div className="h-2 w-1/4 bg-border rounded" />
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="h-2 w-1/3 bg-border rounded" />
+                          <div className="h-2 w-1/5 bg-border rounded" />
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="h-2 w-2/5 bg-border rounded" />
+                          <div className="h-2 w-1/4 bg-border rounded" />
+                        </div>
+                      </div>
+                      <div className="border-t border-border pt-3">
+                        <div className="h-10 w-full bg-foreground/10 border border-foreground/20 rounded-lg flex items-center justify-center gap-2">
+                          <div className="h-2 w-1/3 bg-foreground/30 rounded" />
+                          <div className="w-3 h-3 rounded-sm bg-foreground/20" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Contact Form */}
           <AnimatedSection scale>
             <div className="bg-card border border-border rounded-2xl p-8 lg:p-12 max-w-4xl mx-auto hover:border-gray-medium transition-colors duration-500 mb-16">
               <h2 className="font-heading text-3xl font-bold text-foreground mb-8 text-center">Send Us a Message</h2>

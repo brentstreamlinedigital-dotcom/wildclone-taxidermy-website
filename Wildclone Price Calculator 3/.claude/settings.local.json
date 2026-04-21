@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx serve:*)",
+      "Bash(timeout 4)",
+      "Bash(ping -n 4 127.0.0.1)",
+      "Bash(npx netlify-cli:*)",
+      "Bash(npx surge:*)",
+      "Bash(powershell -Command \"Compress-Archive -Path ''C:\\\\Users\\\\bwent\\\\Desktop\\\\Wildclone Price Calculator\\\\index.html'' -DestinationPath ''C:\\\\Users\\\\bwent\\\\Desktop\\\\wildclone-calc.zip'' -Force\")",
+      "Bash(powershell -Command \"$input | Out-String\")",
+      "Bash(powershell -Command \"Get-Content ''C:\\\\Users\\\\bwent\\\\Desktop\\\\Wildclone Price Calculator\\\\index.html'' -Raw | Set-Clipboard\")"
+    ]
+  }
+}

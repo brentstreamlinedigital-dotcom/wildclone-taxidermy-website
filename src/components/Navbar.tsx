@@ -20,6 +20,7 @@ const navLinks = [
     ]
   },
   { label: "Blog", path: "/blog" },
+  { label: "Calculator", path: "/calculator" },
   { label: "Contact", path: "/contact" },
 ];
 
