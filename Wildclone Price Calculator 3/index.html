@@ -1292,7 +1292,9 @@ function updateResult() {
   const crateInfo  = hasCrate ? CRATE_INFO[selectedCrate] : null;
 
   const grandTotal = taxidermyTotal + cratePrice;
-  const totalDisplay = hasPOA ? 'POA' : `$${grandTotal.toLocaleString()}`;
+  const totalDisplay = hasPOA 
+    ? (grandTotal > 0 ? `$${grandTotal.toLocaleString()} + POA` : 'POA') 
+    : `$${grandTotal.toLocaleString()}`;
 
   document.getElementById('result-title').textContent = `${validItems.length} Item(s) Selected`;
   document.getElementById('price-range').textContent  = totalDisplay;

@@ -1045,7 +1045,7 @@ const PRICE_DATA = {
   vervet_monkey: { shoulder_mount: 491, pedestal_wall: 551, pedestal_floor: 719, full_mount: 930, half_mount: 465, bleached_skull: 156, european_mount: 188, flat_skin: 136, back_skin: 103 },
   warthog: { shoulder_mount: 556, pedestal_wall: 609, pedestal_floor: 797, full_mount: 1828, half_mount: 915, bleached_skull: 278, european_mount: 327, flat_skin: 146, back_skin: 107 },
   waterbuck: { shoulder_mount: 1005, pedestal_wall: 1107, pedestal_floor: 1379, full_mount: 5165, half_mount: 2582, bleached_skull: 220, european_mount: 327, flat_skin: 262, back_skin: 192 },
-  zebra: { shoulder_mount: 877, pedestal_wall: 969, pedestal_floor: 1225, full_mount: 5165, half_mount: 2582, bleached_skull: 241, european_mount: 327, flat_skin: 380, back_skin: 220 },
+  zebra: { shoulder_mount: 877, pedestal_wall: 969, pedestal_floor: 1225, full_mount: 5165, half_mount: 2582, bleached_skull: 241, european_mount: 327, flat_skin: 511, back_skin: 337 },
 };
 
 /* ─────────────────────────────
@@ -1298,7 +1298,9 @@ function updateResult() {
   const crateInfo  = hasCrate ? CRATE_INFO[selectedCrate] : null;
 
   const grandTotal = taxidermyTotal + cratePrice;
-  const totalDisplay = hasPOA ? 'POA' : `$${grandTotal.toLocaleString()}`;
+  const totalDisplay = hasPOA 
+    ? (grandTotal > 0 ? `$${grandTotal.toLocaleString()} + POA` : 'POA') 
+    : `$${grandTotal.toLocaleString()}`;
 
   document.getElementById('result-title').textContent = `${validItems.length} Item(s) Selected`;
   document.getElementById('price-range').textContent  = totalDisplay;
