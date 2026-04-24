@@ -1,0 +1,84 @@
+                    Unnamed: 0                  Unnamed: 1                  Unnamed: 2                  Unnamed: 3
+0                          USA                         NaN                         NaN                         NaN
+1                          NaN                         NaN                         NaN                         NaN
+2            800 x 550 x 550mm         1100 x 1100 x 800mm        1100 x 1100 x 1100mm        1100 x 1100 x 1600mm
+3                  SMALL CRATE                MEDIUM CRATE                 LARGE CRATE           EXTRA LARGE CRATE
+4                          NaN                         NaN                         NaN                         NaN
+5           2X European Mounts          2x European Mounts          2x European Mounts          6x European Mounts
+6         2x Flat / Back Skins        4x Flat / Back Skins        6x Flat / Back Skins        8x Flat / Back Skins
+7                          NaN          2x Shoulder Mounts          4x Shoulder Mounts          6x Shoulder Mounts
+8                          NaN                         NaN                         NaN                         NaN
+9               TOTAL USD 1240              TOTAL USD 2140              TOTAL USD 2600              TOTAL USD 3240
+10              This Includes:              This Includes:              This Includes:              This Includes:
+11      SHIPPING FEE - USD 300     SHIPPING FEE - USD 1200     SHIPPING FEE - USD 1660     SHIPPING FEE - USD 2300
+12              Export Permits              Export Permits              Export Permits              Export Permits
+13               Ocean Freight               Ocean Freight               Ocean Freight               Ocean Freight
+14                 Inspections                 Inspections                 Inspections                 Inspections
+15       Crate and Documention       Crate and Documention       Crate and Documention       Crate and Documention
+16                Handling Fee                Handling Fee                Handling Fee                Handling Fee
+17                   Insurance                   Insurance                   Insurance                   Insurance
+18                  Fumigation                  Fumigation                  Fumigation                  Fumigation
+19                         NaN                         NaN                         NaN                         NaN
+20      CLEARING FEE - USD 940      CLEARING FEE - USD 940      CLEARING FEE - USD 940      CLEARING FEE - USD 940
+21                 ISF Filling                 ISF Filling                 ISF Filling                 ISF Filling
+22          Clearing Agent Fee          Clearing Agent Fee          Clearing Agent Fee          Clearing Agent Fee
+23            Power of Attorny            Power of Attorny            Power of Attorny            Power of Attorny
+24               VET Brokerage               VET Brokerage               VET Brokerage               VET Brokerage
+25                    Bond Fee                    Bond Fee                    Bond Fee                    Bond Fee
+26  Delivery to Port Warehouse  Delivery to Port Warehouse  Delivery to Port Warehouse  Delivery to Port Warehouse
+27                         NaN                         NaN                         NaN                         NaN
+28                      CANADA                         NaN                         NaN                         NaN
+29                         NaN                         NaN                         NaN                         NaN
+30           800 x 550 x 550mm         1100 x 1100 x 800mm        1100 x 1100 x 1100mm        1100 x 1100 x 1600mm
+31                 SMALL CRATE                MEDIUM CRATE                 LARGE CRATE           EXTRA LARGE CRATE
+32                         NaN                         NaN                         NaN                         NaN
+33          2X European Mounts          2x European Mounts          2x European Mounts          6x European Mounts
+34        2x Flat / Back Skins        4x Flat / Back Skins        6x Flat / Back Skins        8x Flat / Back Skins
+35                         NaN          2x Shoulder Mounts          4x Shoulder Mounts          6x Shoulder Mounts
+36                         NaN                         NaN                         NaN                         NaN
+37              TOTAL USD 1160              TOTAL USD 1985              TOTAL USD 2385              TOTAL USD 3085
+38              This Includes:              This Includes:              This Includes:              This Includes:
+39      SHIPPING FEE - USD 275     SHIPPING FEE - USD 1100     SHIPPING FEE - USD 1500     SHIPPING FEE - USD 2200
+40              Export Permits              Export Permits              Export Permits              Export Permits
+41               Ocean Freight               Ocean Freight               Ocean Freight               Ocean Freight
+42                 Inspections                 Inspections                 Inspections                 Inspections
+43       Crate and Documention       Crate and Documention       Crate and Documention       Crate and Documention
+44                Handling Fee                Handling Fee                Handling Fee                Handling Fee
+45                   Insurance                   Insurance                   Insurance                   Insurance
+46                  Fumigation                  Fumigation                  Fumigation                  Fumigation
+47                         NaN                         NaN                         NaN                         NaN
+48      CLEARING FEE - USD 885      CLEARING FEE - USD 885      CLEARING FEE - USD 885      CLEARING FEE - USD 885
+49                 ISF Filling                 ISF Filling                 ISF Filling                 ISF Filling
+50          Clearing Agent Fee          Clearing Agent Fee          Clearing Agent Fee          Clearing Agent Fee
+51            Power of Attorny            Power of Attorny            Power of Attorny            Power of Attorny
+52               VET Brokerage               VET Brokerage               VET Brokerage               VET Brokerage
+53                    Bond Fee                    Bond Fee                    Bond Fee                    Bond Fee
+54  Delivery to Port Warehouse  Delivery to Port Warehouse  Delivery to Port Warehouse  Delivery to Port Warehouse
+55                         NaN                         NaN                         NaN                         NaN
+56               UK AND EUROPE                         NaN                         NaN                         NaN
+57                         NaN                         NaN                         NaN                         NaN
+58           800 x 550 x 550mm         1100 x 1100 x 800mm        1100 x 1100 x 1100mm        1100 x 1100 x 1600mm
+59                 SMALL CRATE                MEDIUM CRATE                 LARGE CRATE           EXTRA LARGE CRATE
+60                         NaN                         NaN                         NaN                         NaN
+61          2X European Mounts          2x European Mounts          2x European Mounts          6x European Mounts
+62        2x Flat / Back Skins        4x Flat / Back Skins        6x Flat / Back Skins        8x Flat / Back Skins
+63                         NaN          2x Shoulder Mounts          4x Shoulder Mounts          6x Shoulder Mounts
+64                         NaN                         NaN                         NaN                         NaN
+65               TOTAL USD 885              TOTAL USD 1560              TOTAL USD 2060              TOTAL USD 2660
+66              This Includes:              This Includes:              This Includes:              This Includes:
+67      SHIPPING FEE - USD 225      SHIPPING FEE - USD 900     SHIPPING FEE - USD 1400     SHIPPING FEE - USD 2000
+68              Export Permits              Export Permits              Export Permits              Export Permits
+69               Ocean Freight               Ocean Freight               Ocean Freight               Ocean Freight
+70                 Inspections                 Inspections                 Inspections                 Inspections
+71       Crate and Documention       Crate and Documention       Crate and Documention       Crate and Documention
+72                Handling Fee                Handling Fee                Handling Fee                Handling Fee
+73                   Insurance                   Insurance                   Insurance                   Insurance
+74                  Fumigation                  Fumigation                  Fumigation                  Fumigation
+75                         NaN                         NaN                         NaN                         NaN
+76      CLEARING FEE - USD 660      CLEARING FEE - USD 660      CLEARING FEE - USD 660      CLEARING FEE - USD 660
+77                 ISF Filling                 ISF Filling                 ISF Filling                 ISF Filling
+78          Clearing Agent Fee          Clearing Agent Fee          Clearing Agent Fee          Clearing Agent Fee
+79            Power of Attorny            Power of Attorny            Power of Attorny            Power of Attorny
+80               VET Brokerage               VET Brokerage               VET Brokerage               VET Brokerage
+81                    Bond Fee                    Bond Fee                    Bond Fee                    Bond Fee
+82  Delivery to Port Warehouse  Delivery to Port Warehouse  Delivery to Port Warehouse  Delivery to Port Warehouse
